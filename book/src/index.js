@@ -3,10 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { BookStoreProvider } from "./context/BookStoreContext";
 
 ReactDOM.render(
   <React.StrictMode>
+    <BookStoreProvider>
+
+
     <App/>
+    </BookStoreProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

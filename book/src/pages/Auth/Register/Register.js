@@ -13,6 +13,7 @@ export const Register = ({handleClick}) => {
   const[address,setAddress] = useState("");
   const[error,setError] = useState("");
   const[success,setSuccess] = useState("");
+  const[isAdmin,setIsAdmin] = useState(false);
 
   
   const handleSubmit = async(e) => {
@@ -34,7 +35,8 @@ export const Register = ({handleClick}) => {
           username: username,
           email: email,
           password: password,
-          address: address
+          address: address,
+          isAdmin: isAdmin
         }
 
         console.log(obj); 
@@ -91,10 +93,10 @@ export const Register = ({handleClick}) => {
       <div className="text-center">Already have an account? 
       <button onClick = { handleClick }> Sign in</button>
       </div>
-      <p className="text-white-50 mb-5">
+      <div className="text-white-50 mb-5">
         <b>Please fill up the Registration form below </b>
         <p>{error}</p>
-      </p>
+      </div>
       <form method="" onSubmit={handleSubmit}>
         <div className="row">
           <div className="form-group col-md-6">
@@ -103,14 +105,15 @@ export const Register = ({handleClick}) => {
               type="text"
               className="form-control form-control-lg"
               id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              // aria-describedby="emailHelp"
               placeholder="First Name"
               name="firstName"
+              autoComplete="firstName"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               
             />
-            {console.log(firstName)}
+            {/* {console.log(firstName)} */}
           </div>
           <div className="form-group col-md-6">
             {/* last name */}
@@ -119,12 +122,13 @@ export const Register = ({handleClick}) => {
               className="form-control form-control-lg"
               id="exampleInputPassword1"
               placeholder="Last Name"
+              autoComplete="lastName"
               name="lastName"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               
             />
-            {console.log(lastName)}
+            {/* {console.log(lastName)} */}
           </div>
         </div>
         <br/>
@@ -138,13 +142,14 @@ export const Register = ({handleClick}) => {
               aria-describedby="emailHelp"
               placeholder="Username"
               name="username"
+              autoComplete="username"
               value={username}
               onChange = {(e) => setUsername(e.target.value)}
               
             />
-            {console.log(username)}
+            {/* {console.log(username)} */}
           </div>
-          <div class="form-group col-md-6">
+          <div className="form-group col-md-6">
             {/* email */}
             <input
               type="email"
@@ -152,11 +157,12 @@ export const Register = ({handleClick}) => {
               id="exampleInputPassword1"
               placeholder="Email"
               name="email"
+              autoComplete="email"
               value={email}
               onChange = {(e) => setEmail(e.target.value)}
               
             />
-            {console.log(email)}
+            {/* {console.log(email)} */}
           </div>
         </div>
         <br/>
@@ -174,9 +180,9 @@ export const Register = ({handleClick}) => {
               onChange = {(e) => setPassword(e.target.value)}
               
             />
-            {console.log(password)}
+            {/* {console.log(password)} */}
           </div>
-          <div class="form-outline form-white mb-4 col-md-6">
+          <div className="form-outline form-white mb-4 col-md-6">
             {/* email */}
             <input
               type="password"
@@ -196,7 +202,7 @@ export const Register = ({handleClick}) => {
             {/* username */}
             <div className="form-group">
               <textarea
-                class="form-control form-control-lg"
+                className="form-control form-control-lg"
                 id="exampleFormControlTextarea1"
                 rows="3"
                 placeholder="Your Address"
@@ -205,12 +211,12 @@ export const Register = ({handleClick}) => {
                 onChange = {(e) => setAddress(e.target.value)}
                 
               ></textarea>
-              {console.log(address)}
+              {/* {console.log(address)} */}
             </div>
           </div>
         </div>
         <br/>
-        <button class="btn btn-outline-light btn-block btn-lg px-5" type="submit">Register</button>
+        <button className="btn btn-outline-light btn-block btn-lg px-5" type="submit">Register</button>
       </form>
         <div className="display-2" style = {{margin:"10%"}}>{success}</div>
     </div>

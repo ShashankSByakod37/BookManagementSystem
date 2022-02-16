@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import BookStoreContext from "../../../context/BookStoreContext";
 
-export const Login = ({handleClick}) => {
+export const Login = ({ handleClick }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [admin, setAdmin] = useState(false);
 
   const styling = {
     width: "45%",
@@ -14,54 +16,61 @@ export const Login = ({handleClick}) => {
     border: "15px solid transparent",
     borderRadius: "5%",
   };
-
   const navigate = useNavigate();
+  const { changeIsLogged, changeStatus,isAdmin } = useContext(BookStoreContext);
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (username === "" || password === "") {
       setError("Please fill all the fields");
     } else {
       setError("");
-      const response = await fetch("http://localhost:5000/users?_sort=id&_order=desc");
+      const response = await fetch(
+        "http://localhost:5000/users?_sort=id&_order=desc"
+      );
 
       const data = await response.json();
 
-      console.log(data)
-        let flag = false;
+      console.log(data);
+      let flag = false;
       data.map((ele) => {
+        if (ele.username == username && ele.password == password) {
+          if (ele.isAdmin !== isAdmin) {
+            changeStatus();
+          }
 
 
-          if(ele.username == username && ele.password == password ){
-            console.log("Login Successful");
-
-            setUsername("");
-            setPassword("");
-            flag = true;
-            // return;
-            navigate("/home");
-            
-          }
-          else if(ele.username === username && ele.password !== password){
-              setError("password incorrect");
-              console.log("pass incorrect");
-              console.log(flag);
-          }
-          else{
-              setError("username not found");
-              console.log("username not found");
-              console.log(flag);
-          }
-      })
+          console.log("Login Successful");
+          const data = {
+            username,
+            password,
+          };
+          localStorage.setItem("user", JSON.stringify(data));
+          setUsername("");
+          setPassword("");
+          flag = true;
+          // return;
+          changeIsLogged(true);
+          // navigate("/home");
+        } else if (ele.username === username && ele.password !== password) {
+          setError("password incorrect");
+          console.log("pass incorrect");
+          console.log(flag);
+        } else {
+          setError("username not found");
+          console.log("username not found");
+          console.log(flag);
+        }
+      });
     }
   };
 
   return (
     <div className="container" style={styling}>
       <h2 className="fw-bold mb-2 text-uppercase">Login </h2>
-      <div className="text-center">Never had an account? 
-      <button onClick = { handleClick }> Sign up</button>
+      <div className="text-center">
+        Never had an account?
+        <button onClick={handleClick}> Sign up</button>
       </div>
       <p className="text-white-50 mb-5">
         <b>Please provide your username and password below </b>
@@ -75,9 +84,10 @@ export const Login = ({handleClick}) => {
           <input
             type="text"
             id="typeEmailX"
-            class="form-control form-control-lg"
+            className="form-control form-control-lg"
             placeholder="Username"
             value={username}
+            autoComplete="username"
             onChange={(e) => {
               setUsername(e.target.value);
             }}
@@ -89,8 +99,9 @@ export const Login = ({handleClick}) => {
           <input
             type="password"
             id="typePasswordX"
-            class="form-control form-control-lg"
+            className="form-control form-control-lg"
             placeholder="Password"
+            autoComplete="current-password"
             value={password}
             onChange={(e) => {
               setPassword(e.target.value);
