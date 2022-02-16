@@ -1,0 +1,13 @@
+{
+  "users": [
+    {
+      "firstName": "test1",
+      "lastName": "last",
+      "username": "user1",
+      "email": "user@gmail.com",
+      "password": "pass1",
+      "address": "cdscss",
+      "id": 1
+    }
+  ]
+}
