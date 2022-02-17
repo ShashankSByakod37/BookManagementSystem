@@ -1,2 +1,8 @@
 svvvvvvvds
 vsvsdvs
+
+
+
+
+join book and buyitem 
+where 

@@ -61,7 +61,7 @@ export const Header = () => {
           {console.log( "nav bar returns for orders ",localStorage.getItem("isAdmin"))}
             
             <Link className="nav-link h3" to="/orders">
-              Orders
+              Purchase
             </Link>
           </li>)}
           

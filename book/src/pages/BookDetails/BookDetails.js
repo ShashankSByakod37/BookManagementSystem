@@ -113,6 +113,17 @@ export const BookDetails = () => {
                 </p>{" "}
                 {bk.author}
               </h2>
+              <div
+                className="display-6"
+                style={{
+                  // fontSize: "2.5rem",
+                  // fontWeight: "bold",
+                  fontFamily: "Times serif",
+                  color: "#2e2e2e",
+                }}
+              ><p style = {{display:"inline"}}>Published @</p>
+                {bk.publishedyear}
+              </div>
               <h2
                 style={{
                   fontFamily: "serif",

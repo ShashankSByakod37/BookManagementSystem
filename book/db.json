@@ -29,6 +29,16 @@
       "address": "test2 address",
       "isAdmin": 1,
       "id": 5
+    },
+    {
+      "firstName": "rajat",
+      "lastName": "kinger",
+      "username": "rajatkinger",
+      "email": "rajat.kinger@gmail.com",
+      "password": "hello",
+      "address": "hello",
+      "isAdmin": true,
+      "id": 6
     }
   ],
   "books": [
@@ -127,6 +137,22 @@
       "publishedyear": 1920,
       "genre": "Fiction",
       "id": 12
+    },
+    {
+      "bookName": "fgdfgdfg",
+      "authorName": "dggdgfdg",
+      "price": "7",
+      "publishedYear": "7",
+      "genre": "dsggdfgfdgfd",
+      "id": 13
+    },
+    {
+      "bookName": "ddas",
+      "authorName": "dasdasd",
+      "price": "4",
+      "publishedYear": "5",
+      "genre": "ssdfsdfsdf",
+      "id": 14
     }
   ],
   "buyItems": [
@@ -177,6 +203,30 @@
       "bookid": 2,
       "quantity": "4",
       "id": 8
+    },
+    {
+      "userid": 1,
+      "bookid": 1,
+      "quantity": "6",
+      "id": 9
+    },
+    {
+      "userid": 1,
+      "bookid": 3,
+      "quantity": "4",
+      "id": 10
+    },
+    {
+      "userid": 1,
+      "bookid": 3,
+      "quantity": "4",
+      "id": 11
+    },
+    {
+      "userid": 1,
+      "bookid": 1,
+      "quantity": "5",
+      "id": 12
     }
   ]
 }
