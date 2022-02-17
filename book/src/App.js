@@ -15,6 +15,7 @@ import { BookList } from "./pages/Books/BookList";
 import {Order} from "./pages/Order/Order";
 import { BookDetails } from "./pages/BookDetails/BookDetails";
 import {Customer} from "./pages/Customer/Customer";
+import { AddBook } from "./pages/AddBook/AddBook";
 
 function App() {
   const { isLogged } = useContext(BookStoreContext);
@@ -41,7 +42,7 @@ function App() {
             <Route path = "/about" element={<About />} />
             <Route path = "/orders" element={<Order />} />
             <Route path = "/customers" element={<Customer />} />
-
+            <Route path = "/addbook" element={<AddBook />} />
           </Routes>
         </Router>
       </div>

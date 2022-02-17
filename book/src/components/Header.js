@@ -30,6 +30,13 @@ export const Header = () => {
               About
             </Link>
           </li>
+
+          <li className="nav-item " style = {{  display : isAdmin ?  "auto" : "none" }}>
+            <Link className="nav-link h3" to="/addbook">
+              Add a Book 
+            </Link>
+          </li>
+
           <li className="nav-item ">
             <Link className="nav-link h3" to="/books">
               Books
