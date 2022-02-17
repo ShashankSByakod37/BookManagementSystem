@@ -7,7 +7,7 @@
       "email": "shashank@games24x7.com",
       "password": "shashu",
       "address": "ssds cdsds fdsfdsf",
-      "isAdmin": false,
+      "isAdmin": 0,
       "id": 1
     },
     {
@@ -17,7 +17,7 @@
       "email": "test1@email.com",
       "password": "test1",
       "address": "test1 addresss",
-      "isAdmin": false,
+      "isAdmin": 0,
       "id": 4
     },
     {
@@ -27,7 +27,7 @@
       "email": "test2@email.com",
       "password": "test2",
       "address": "test2 address",
-      "isAdmin": false,
+      "isAdmin": 1,
       "id": 5
     }
   ],
@@ -127,6 +127,56 @@
       "publishedyear": 1920,
       "genre": "Fiction",
       "id": 12
+    }
+  ],
+  "buyItems": [
+    {
+      "id": 1,
+      "userid": 2,
+      "bookid": 2,
+      "quantity": 5
+    },
+    {
+      "userid": 2,
+      "bookid": 2,
+      "quantity": 5,
+      "id": 2
+    },
+    {
+      "userid": 4,
+      "bookid": 1,
+      "quantity": 1,
+      "id": 3
+    },
+    {
+      "userid": 4,
+      "bookid": 1,
+      "quantity": 6,
+      "id": 4
+    },
+    {
+      "userid": 1,
+      "bookid": 1,
+      "quantity": "5",
+      "id": 5
+    },
+    {
+      "userid": 1,
+      "bookid": 2,
+      "quantity": "5",
+      "id": 6
+    },
+    {
+      "userid": 1,
+      "bookid": 2,
+      "quantity": "2",
+      "id": 7
+    },
+    {
+      "userid": 5,
+      "bookid": 2,
+      "quantity": "4",
+      "id": 8
     }
   ]
 }

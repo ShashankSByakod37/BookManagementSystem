@@ -7,9 +7,10 @@ function Card({ children, reverse }) {
   return (
     <div
       className='card'
+      // Highlight,ThreeDLightShadow
       style={{
-        backgroundColor: reverse ? 'rgba(0,0,0,0.4)' : '#fff',
-        color: reverse ? '#fff' : '#000',
+        backgroundColor: reverse ? 'antiquewhite ThreeDLightShadow' : 'cornflowerblue',   
+        color: reverse ? 'dimgrey' : 'black',
       }}
     >
       {children}

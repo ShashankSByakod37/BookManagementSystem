@@ -36,15 +36,27 @@ export const Login = ({ handleClick }) => {
       let flag = false;
       data.map((ele) => {
         if (ele.username == username && ele.password == password) {
-          if (ele.isAdmin !== isAdmin) {
-            changeStatus();
-          }
+          // if (ele.isAdmin !== isAdmin) {
+          //   changeStatus();
+          // }
 
           console.log("Login Successful");
           const data = {
-            username,
-            password,
+            username: ele.username,
+            id: ele.id,
+            password: ele.password,
           };
+          
+          const uname = ele.username;
+          const uid = ele.id;
+
+          localStorage.setItem("username", uname);
+          localStorage.setItem("id", uid);
+          console.log("admin status",ele.isAdmin);
+          localStorage.setItem("isAdmin", ele.isAdmin);
+          setAdmin(ele.isAdmin);
+          console.log("admin status",ele.isAdmin);
+
           localStorage.setItem("user", JSON.stringify(data));
           setUsername("");
           setPassword("");

@@ -9,6 +9,8 @@ export const Header = () => {
     const {logout,isAdmin,isLogged} = useContext(BookStoreContext);
 
        const navigate = useNavigate();
+
+      //  const a = false;
     
   return (
     <Card reverse={true} style = {{
@@ -31,11 +33,15 @@ export const Header = () => {
             </Link>
           </li>
 
-          <li className="nav-item " style = {{  display : isAdmin ?  "auto" : "none" }}>
+       {parseInt(localStorage.getItem("isAdmin")) &&  (<li className="nav-item " >
+            {console.log( "nav bar returns for add a book ", (isAdmin))}
             <Link className="nav-link h3" to="/addbook">
               Add a Book 
             </Link>
-          </li>
+          </li>)}
+
+
+          {/* <h2>{isAdmin }{typeof(parseInt(localStorage.getItem("isAdmin")))}</h2> */}
 
           <li className="nav-item ">
             <Link className="nav-link h3" to="/books">
@@ -43,17 +49,21 @@ export const Header = () => {
             </Link>
           </li>
           
-          <li className="nav-item " style = {{  display : isAdmin ?  "auto" : "none" }}>
+       {parseInt(localStorage.getItem("isAdmin")) &&   (<li className="nav-item " >
+          {console.log( "nav bar returns for customers ",typeof(localStorage.getItem("isAdmin")))}
+            
             <Link className="nav-link h3" to="/customers">
               Customers
             </Link>
-          </li>
+          </li>)}
         
-          <li className="nav-item" style = {{  display : !isAdmin ?  "auto" : "none" }}>
+       {!(parseInt(localStorage.getItem("isAdmin"))) && (<li className="nav-item" style = {{  display : !isAdmin && 'auto' }}>
+          {console.log( "nav bar returns for orders ",localStorage.getItem("isAdmin"))}
+            
             <Link className="nav-link h3" to="/orders">
               Orders
             </Link>
-          </li>
+          </li>)}
           
           <li className="nav-item">
             <Link className="nav-link " to="/books/:id"></Link>
