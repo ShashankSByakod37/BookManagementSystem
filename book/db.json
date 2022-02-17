@@ -29,6 +29,16 @@
       "address": "test2 address",
       "isAdmin": false,
       "id": 5
+    },
+    {
+      "firstName": "rajat",
+      "lastName": "kinger",
+      "username": "rajatkinger",
+      "email": "rajat.kinger@gmail.com",
+      "password": "hello",
+      "address": "hello",
+      "isAdmin": true,
+      "id": 6
     }
   ],
   "books": [
