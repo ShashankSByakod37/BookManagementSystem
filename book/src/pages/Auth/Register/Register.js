@@ -91,7 +91,16 @@ export const Register = ({handleClick}) => {
       
       <h2 className="fw-bold mb-2 text-uppercase">Register your Account</h2>
       <div className="text-center">Already have an account? 
-      <button onClick = { handleClick }> Sign in</button>
+      <button onClick = { handleClick } style={{
+            backgroundColor: "transparent",
+
+            backgroundRepeat: "no-repeat",
+            border: "none",
+            cursor: "pointer",
+            overflow: "hidden",
+            outline: "none",
+            color:"yellow"
+          }}> <b>Sign in</b></button>
       </div>
       <div className="text-white-50 mb-5">
         <b>Please fill up the Registration form below </b>

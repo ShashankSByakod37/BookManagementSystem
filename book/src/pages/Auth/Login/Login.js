@@ -10,14 +10,15 @@ export const Login = ({ handleClick }) => {
 
   const styling = {
     width: "45%",
-    margin: "0%  27.5% 0% 27.5%",
+    margin: "-5%  27.5% 0% 27.5%",
     backgroundColor: "transparent",
     padding: "10%",
     border: "15px solid transparent",
     borderRadius: "5%",
   };
   const navigate = useNavigate();
-  const { changeIsLogged, changeStatus,isAdmin } = useContext(BookStoreContext);
+  const { changeIsLogged, changeStatus, isAdmin } =
+    useContext(BookStoreContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +39,6 @@ export const Login = ({ handleClick }) => {
           if (ele.isAdmin !== isAdmin) {
             changeStatus();
           }
-
 
           console.log("Login Successful");
           const data = {
@@ -70,7 +70,21 @@ export const Login = ({ handleClick }) => {
       <h2 className="fw-bold mb-2 text-uppercase">Login </h2>
       <div className="text-center">
         Never had an account?
-        <button onClick={handleClick}> Sign up</button>
+        <button
+          onClick={handleClick}
+          style={{
+            backgroundColor: "transparent",
+
+            backgroundRepeat: "no-repeat",
+            border: "none",
+            cursor: "pointer",
+            overflow: "hidden",
+            outline: "none",
+            color:"yellow"
+          }}
+        ><b>
+          Sign up
+          </b></button>
       </div>
       <p className="text-white-50 mb-5">
         <b>Please provide your username and password below </b>
