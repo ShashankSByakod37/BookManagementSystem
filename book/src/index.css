@@ -25,6 +25,6 @@ code {
 
 .nav-item:hover,.nav-item:active{
   background-color: rgb(203, 209, 209);
-  color: rgb(194, 209, 176);
+
   border-radius: 5%;
 }

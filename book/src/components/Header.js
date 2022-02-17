@@ -37,7 +37,7 @@ export const Header = () => {
           </li>
           
           <li className="nav-item " style = {{  display : isAdmin ?  "auto" : "none" }}>
-            <Link className="nav-link h3" to="/books">
+            <Link className="nav-link h3" to="/customers">
               Customers
             </Link>
           </li>

@@ -29,6 +29,124 @@
       "address": "shahsak sjkkxcc",
       "isAdmin": true,
       "id": 3
+    },
+    {
+      "firstName": "testFullName",
+      "lastName": "testLastName",
+      "username": "test1",
+      "email": "test1@email.com",
+      "password": "test1",
+      "address": "test1 addresss",
+      "isAdmin": false,
+      "id": 4
+    },
+    {
+      "firstName": "test2FullName",
+      "lastName": "test2LastName",
+      "username": "test2",
+      "email": "test2@email.com",
+      "password": "test2",
+      "address": "test2 address",
+      "isAdmin": false,
+      "id": 5
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "name": "Ulysses",
+      "author": "James Joyce",
+      "price": 700,
+      "publishedyear": 1920,
+      "genre": "Fiction"
+    },
+    {
+      "id": 2,
+      "name": "The Alchemist",
+      "author": "Paulo Coelho",
+      "price": 500,
+      "publishedyear": 1988,
+      "genre": "Adventure fiction"
+    },
+    {
+      "name": "The Room on the Roof",
+      "author": "Ruskin Bond",
+      "price": 300,
+      "publishedyear": 1956,
+      "genre": "Novel fiction",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "name": "book4",
+      "author": "James Joyce",
+      "price": 700,
+      "publishedyear": 1920,
+      "genre": "Fiction"
+    },
+    {
+      "id": 5,
+      "name": "book5",
+      "author": "Paulo Coelho",
+      "price": 500,
+      "publishedyear": 1988,
+      "genre": "Adventure fiction"
+    },
+    {
+      "id": 6,
+      "name": "book6",
+      "author": "Ruskin Bond",
+      "price": 300,
+      "publishedyear": 1956,
+      "genre": "Novel fiction"
+    },
+    {
+      "name": "book7",
+      "author": "James Joyce",
+      "price": 700,
+      "publishedyear": 1920,
+      "genre": "Fiction",
+      "id": 7
+    },
+    {
+      "name": "book8",
+      "author": "James Joyce",
+      "price": 700,
+      "publishedyear": 1920,
+      "genre": "Fiction",
+      "id": 8
+    },
+    {
+      "name": "book9",
+      "author": "James Joyce",
+      "price": 700,
+      "publishedyear": 1920,
+      "genre": "Fiction",
+      "id": 9
+    },
+    {
+      "name": "book10",
+      "author": "James Joyce",
+      "price": 700,
+      "publishedyear": 1920,
+      "genre": "Fiction",
+      "id": 10
+    },
+    {
+      "name": "book11",
+      "author": "James Joyce",
+      "price": 700,
+      "publishedyear": 1920,
+      "genre": "Fiction",
+      "id": 11
+    },
+    {
+      "name": "book12",
+      "author": "James Joyce",
+      "price": 700,
+      "publishedyear": 1920,
+      "genre": "Fiction",
+      "id": 12
     }
   ]
 }

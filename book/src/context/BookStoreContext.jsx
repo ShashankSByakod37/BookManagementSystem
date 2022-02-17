@@ -15,15 +15,35 @@ export const BookStoreProvider = ({ children }) => {
     },
   ]);
 
+  const [book,setBook] = useState([]);
+
+  useEffect(() => {
+    console.log(book);
+
+  },[book]);
+
   const[isAdmin,setIsAdmin] = useState(false);
 
   const [isLogged,setIsLogged] = useState(false);
 
+  const getBooks = async () => {
+    const res = await fetch("http://localhost:5000/books", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
+    const data = await res.json();
+
+    setBook([...book, ...data]);
+  };
 
   
 
   useEffect(() => {
+
+    getBooks();
     const user = localStorage.getItem("user");
     if (user) {
       // setUser(JSON.parse(user));
@@ -53,7 +73,7 @@ export const BookStoreProvider = ({ children }) => {
   
   
   return (
-    <BookStoreContext.Provider value={{ changeStatus,logout, user,addUser,isAdmin,setIsAdmin, isLogged,changeIsLogged}}>
+    <BookStoreContext.Provider value={{ book,changeStatus,logout, user,addUser,isAdmin,setIsAdmin, isLogged,changeIsLogged}}>
       {children}
     </BookStoreContext.Provider>
   );
