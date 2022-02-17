@@ -10,26 +10,7 @@
       "isAdmin": false,
       "id": 1
     },
-    {
-      "firstName": "Shashwath",
-      "lastName": "S",
-      "username": "shashu",
-      "email": "shashank@games24x7.com",
-      "password": "shashu",
-      "address": "ssds cdsds fdsfdsf",
-      "isAdmin": true,
-      "id": 2
-    },
-    {
-      "firstName": "Shashank S ",
-      "lastName": "Byakod",
-      "username": "shashanksbyakod",
-      "email": "shashank@games24x7.com",
-      "password": "shashank",
-      "address": "shahsak sjkkxcc",
-      "isAdmin": true,
-      "id": 3
-    },
+    
     {
       "firstName": "testFullName",
       "lastName": "testLastName",
