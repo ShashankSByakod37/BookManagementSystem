@@ -227,6 +227,12 @@
       "bookid": 1,
       "quantity": "5",
       "id": 12
+    },
+    {
+      "userid": 1,
+      "bookid": 1,
+      "quantity": 1,
+      "id": 13
     }
   ]
 }
