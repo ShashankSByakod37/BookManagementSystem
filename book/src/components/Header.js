@@ -23,7 +23,7 @@ export const Header = () => {
       <ul className="nav">
       <li className="nav-item  ">
             <p className="nav-link h3 " to="/home">
-            Welcome.!,  {localStorage.getItem("username")}
+            Welcome!  {localStorage.getItem("username")}
             </p>
           </li>
 
