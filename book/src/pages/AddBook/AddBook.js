@@ -1,8 +1,9 @@
 import {useState,useContext, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
 
 import BookStoreContext from "../../context/BookStoreContext";
 export const AddBook = ({handleClick}) => {
-
+  const navigate = useNavigate();
   const {setBook,book,addBook,bookEdit,updateBook} = useContext(BookStoreContext);
 
   const [name, setBookName] = useState("");
@@ -36,7 +37,7 @@ export const AddBook = ({handleClick}) => {
       setError("Please fill all the fields");
 
     }
-    
+
     else{
         setError("");
         const obj = {
@@ -55,8 +56,10 @@ export const AddBook = ({handleClick}) => {
         else{
           addBook(obj);
           console.log(obj); 
+          setSuccess("Book Added Successfully");
 
         }
+        navigate("/books");
 
         setBookName("");
         setAuthorName("");
