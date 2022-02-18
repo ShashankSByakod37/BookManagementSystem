@@ -37,7 +37,7 @@ public class SpringBootRestBookStore {
 
 }
 
-@CrossOrigin(origins = "http://localhost:3000/", maxAge = 3600)
+@CrossOrigin(origins = "localhost:3000")
 @RestController
 @RequestMapping("/api")
 class WelcomeController{
@@ -123,15 +123,8 @@ class WelcomeController{
 	public Book getBookById(@PathVariable int id) {
 		System.out.println("Getting book by Id: "+id);
 		
-		return bookServicer.getBookById(id).orElse(null);
+		return bookServicer.getBookById(id);
 		
-		
-	}
-	
-	@PostMapping("/books")
-	public void addBook(@RequestBody Book books) {
-		System.out.println("Inserting books into DB ");
-		bookServicer.insertBook(books);
 		
 	}
 	
@@ -143,10 +136,10 @@ class WelcomeController{
 	}
 	
 	
-	@PutMapping("/books/{id}")
-	public Book updateBook(@PathVariable int id, @RequestBody Book book) {
+	@PutMapping("/books")
+	public Book updateBook(@RequestBody Book book) {
 		System.out.println("Updating book in DB"+book.getId());
-		Book updated = bookServicer.updateBook(book,id);
+		Book updated = bookServicer.updateBook(book);
 		return updated;
 	}
 	
@@ -154,7 +147,7 @@ class WelcomeController{
 	public Book deleteBookById(@PathVariable int id) {
 		System.out.println("Getting book by Id: "+id);
 		
-		Book book =  bookServicer.getBookById(id).orElse(null);
+		Book book =  bookServicer.getBookById(id);
 		
 		
 		System.out.println("Deleting book in DB"+book.getId());
@@ -162,13 +155,13 @@ class WelcomeController{
 		return deleted;
 	}
 	
-	@DeleteMapping("/library/{id}")
+	@DeleteMapping("library/{id}")
 	void deleteCustomersOfBookByBookId(@PathVariable int id) {
 		System.out.println("Deleting customers of book "+id);
 		libraryServicer.deleteCustomersOfBookByBookId(id);
 	}
 	
-	@PostMapping("/library")
+	@PostMapping("library")
 	public Library createMapping(@RequestBody Library library) {
 		System.out.println("Inserting book into DB ");
 		Library inserted = libraryServicer.insertCustomerBookMapping(library);
@@ -194,6 +187,12 @@ class WelcomeController{
 		return libraryServicer.getLibraryByBookId(id);
 	}
 	
+	@GetMapping("library/customers/books/{id}")
+	public List<Book> getBooksByCustomerId(@PathVariable int id){
+		System.out.println("Getting getBooksByCustomerId "+id);
+		return libraryServicer.getBooksByCustomerId(id);
+	} 
+	
 	@PostMapping("reviews")
 	public Reviews createMapping(@RequestBody Reviews reviews) {
 		System.out.println("Inserting reviews mapping into DB "+reviews.getId());
@@ -208,7 +207,6 @@ class WelcomeController{
 		reviewsServicer.addManyReviews(reviews);
 		
 	}
-	
 	
 	@GetMapping("reviews/customers/{id}")
 	public List<Reviews> getReviewsByCustomerId(@PathVariable int id){

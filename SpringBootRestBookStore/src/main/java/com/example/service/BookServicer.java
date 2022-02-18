@@ -20,9 +20,9 @@ public class BookServicer {
 		super();
 	}
 
-	public Optional<Book> getBookById(int id) {
+	public Book getBookById(int id) {
 		System.out.println("In BOOK SERVICER getBookById");
-		return dao.findById(id);
+		return dao.findById(id).orElse(null);
 	}
 
 	public List<Book> getBooks() {
@@ -36,10 +36,8 @@ public class BookServicer {
 		return dao.save(book);
 	}
 
-	public Book updateBook(Book book,int id) {
+	public Book updateBook(Book book) {
 		System.out.println("In BOOK SERVICER updateBook");
-		Book obj = dao.findById(id).orElse(null);
-		book.setId(obj.getId());
 		return dao.save(book);
 	}
 
