@@ -37,7 +37,7 @@ public class SpringBootRestBookStore {
 
 }
 
-@CrossOrigin(origins = "localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000/", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 class WelcomeController{
@@ -128,6 +128,13 @@ class WelcomeController{
 		
 	}
 	
+	@PostMapping("/books")
+	public void addBook(@RequestBody Book books) {
+		System.out.println("Inserting books into DB ");
+		bookServicer.insertBook(books);
+		
+	}
+	
 	@PostMapping("/books/addAll")
 	public void createBook(@RequestBody List<Book> books) {
 		System.out.println("Inserting books into DB ");
@@ -136,10 +143,10 @@ class WelcomeController{
 	}
 	
 	
-	@PutMapping("/books")
-	public Book updateBook(@RequestBody Book book) {
+	@PutMapping("/books/{id}")
+	public Book updateBook(@PathVariable int id, @RequestBody Book book) {
 		System.out.println("Updating book in DB"+book.getId());
-		Book updated = bookServicer.updateBook(book);
+		Book updated = bookServicer.updateBook(book,id);
 		return updated;
 	}
 	
@@ -155,13 +162,13 @@ class WelcomeController{
 		return deleted;
 	}
 	
-	@DeleteMapping("library/{id}")
+	@DeleteMapping("/library/{id}")
 	void deleteCustomersOfBookByBookId(@PathVariable int id) {
 		System.out.println("Deleting customers of book "+id);
 		libraryServicer.deleteCustomersOfBookByBookId(id);
 	}
 	
-	@PostMapping("library")
+	@PostMapping("/library")
 	public Library createMapping(@RequestBody Library library) {
 		System.out.println("Inserting book into DB ");
 		Library inserted = libraryServicer.insertCustomerBookMapping(library);
@@ -201,6 +208,7 @@ class WelcomeController{
 		reviewsServicer.addManyReviews(reviews);
 		
 	}
+	
 	
 	@GetMapping("reviews/customers/{id}")
 	public List<Reviews> getReviewsByCustomerId(@PathVariable int id){

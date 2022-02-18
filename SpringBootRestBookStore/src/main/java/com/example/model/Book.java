@@ -24,7 +24,7 @@ public class Book {
 	int publishedyear;
 	@Column
 	String genre;
-	@Column
+	@Column(length = 1337)
 	String url;
 	
 	
