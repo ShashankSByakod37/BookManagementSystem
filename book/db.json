@@ -41,192 +41,82 @@
       "id": 6
     }
   ],
-  "books": [
-    {
-      "id": 1,
-      "name": "Ulysses",
-      "author": "James Joyce",
-      "price": 700,
-      "publishedyear": 1920,
-      "genre": "Fiction"
-    },
-    {
-      "id": 2,
-      "name": "The Alchemist",
-      "author": "Paulo Coelho",
-      "price": 500,
-      "publishedyear": 1988,
-      "genre": "Adventure fiction"
-    },
-    {
-      "name": "The Room on the Roof",
-      "author": "Ruskin Bond",
-      "price": 300,
-      "publishedyear": 1956,
-      "genre": "Novel fiction",
-      "id": 3
-    },
-    {
-      "id": 4,
-      "name": "book4",
-      "author": "James Joyce",
-      "price": 700,
-      "publishedyear": 1920,
-      "genre": "Fiction"
-    },
-    {
-      "id": 5,
-      "name": "book5",
-      "author": "Paulo Coelho",
-      "price": 500,
-      "publishedyear": 1988,
-      "genre": "Adventure fiction"
-    },
-    {
-      "id": 6,
-      "name": "book6",
-      "author": "Ruskin Bond",
-      "price": 300,
-      "publishedyear": 1956,
-      "genre": "Novel fiction"
-    },
-    {
-      "name": "book7",
-      "author": "James Joyce",
-      "price": 700,
-      "publishedyear": 1920,
-      "genre": "Fiction",
-      "id": 7
-    },
-    {
-      "name": "book8",
-      "author": "James Joyce",
-      "price": 700,
-      "publishedyear": 1920,
-      "genre": "Fiction",
-      "id": 8
-    },
-    {
-      "name": "book9",
-      "author": "James Joyce",
-      "price": 700,
-      "publishedyear": 1920,
-      "genre": "Fiction",
-      "id": 9
-    },
-    {
-      "name": "book10",
-      "author": "James Joyce",
-      "price": 700,
-      "publishedyear": 1920,
-      "genre": "Fiction",
-      "id": 10
-    },
-    {
-      "name": "book11",
-      "author": "James Joyce",
-      "price": 700,
-      "publishedyear": 1920,
-      "genre": "Fiction",
-      "id": 11
-    },
-    {
-      "name": "book12",
-      "author": "James Joyce",
-      "price": 700,
-      "publishedyear": 1920,
-      "genre": "Fiction",
-      "id": 12
-    },
-    {
-      "bookName": "fgdfgdfg",
-      "authorName": "dggdgfdg",
-      "price": "7",
-      "publishedYear": "7",
-      "genre": "dsggdfgfdgfd",
-      "id": 13
-    },
-    {
-      "bookName": "ddas",
-      "authorName": "dasdasd",
-      "price": "4",
-      "publishedYear": "5",
-      "genre": "ssdfsdfsdf",
-      "id": 14
-    }
-  ],
+  "books": [],
   "buyItems": [
     {
-      "id": 1,
-      "userid": 2,
+      "userid": 4,
       "bookid": 2,
-      "quantity": 5
-    },
-    {
-      "userid": 2,
-      "bookid": 2,
-      "quantity": 5,
-      "id": 2
+      "quantity": "5",
+      "id": 14
     },
     {
       "userid": 4,
-      "bookid": 1,
-      "quantity": 1,
-      "id": 3
+      "bookid": 2,
+      "quantity": "5",
+      "id": 15
     },
     {
       "userid": 4,
-      "bookid": 1,
-      "quantity": 6,
-      "id": 4
-    },
-    {
-      "userid": 1,
-      "bookid": 1,
-      "quantity": "5",
-      "id": 5
-    },
-    {
-      "userid": 1,
-      "bookid": 2,
-      "quantity": "5",
-      "id": 6
-    },
-    {
-      "userid": 1,
       "bookid": 2,
       "quantity": "2",
-      "id": 7
+      "id": 16
     },
     {
-      "userid": 5,
+      "userid": 4,
       "bookid": 2,
-      "quantity": "4",
-      "id": 8
+      "quantity": 1,
+      "id": 17
     },
     {
-      "userid": 1,
-      "bookid": 1,
+      "userid": 4,
+      "bookid": 4,
+      "quantity": 1,
+      "id": 18
+    },
+    {
+      "userid": 4,
+      "bookid": 4,
+      "quantity": 1,
+      "id": 19
+    },
+    {
+      "userid": 4,
+      "bookid": 2,
       "quantity": "6",
-      "id": 9
+      "id": 20
     },
     {
-      "userid": 1,
-      "bookid": 3,
-      "quantity": "4",
-      "id": 10
+      "userid": null,
+      "bookid": 2,
+      "quantity": "3",
+      "id": 21
     },
     {
-      "userid": 1,
-      "bookid": 3,
-      "quantity": "4",
+      "userid": "5",
+      "bookid": 2,
+      "quantity": "3",
+      "id": 22
+    },
+    {
+      "userid": "1",
+      "bookid": 2,
+      "quantity": "3",
+      "id": 23
+    },
+    {
+      "userid": "5",
+      "bookid": 2,
+      "quantity": 1,
+      "id": 24
+    }
+  ],
+  "reviews": [
+    {
+      "userid": 4,
+      "bookid": 11,
+      "rating": 2,
+      "text": "fsddsfsdg gdgdfgdfgdfgdf",
       "id": 11
-    },
-    {
-      "userid": 1,
-      "bookid": 1,
-      "quantity": "5",
-      "id": 12
     }
   ]
 }

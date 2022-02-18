@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const BookStoreContext = createContext();
 
@@ -7,6 +8,9 @@ export const BookStoreProvider = ({ children }) => {
     id: 0,
     username: "",
   });
+
+  const [review, setReview] = useState([]);
+
 
   const [buyItem, setBuyItem] = useState([]);
 
@@ -43,7 +47,7 @@ export const BookStoreProvider = ({ children }) => {
 
     const data = await res.json();
 
-    setBook([...book, ...data]);
+    setBook([ ...data]);
   };
 
   const getBuyItems = async () => {
@@ -82,6 +86,23 @@ export const BookStoreProvider = ({ children }) => {
     
   };
 
+  const getReviews = async () => {
+    const res = await fetch("http://localhost:5000/reviews", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+
+    setReview([...data]);
+
+
+
+
+  }
+
   useEffect(()=>{
 
 
@@ -89,6 +110,19 @@ export const BookStoreProvider = ({ children }) => {
     getBuyItems();
     
   },[isLogged])
+
+
+
+  useEffect(() => {
+
+
+    getReviews();
+
+
+
+
+  },[]);
+
   
   useEffect(() => {
     console.log("user data");
@@ -134,19 +168,56 @@ export const BookStoreProvider = ({ children }) => {
   //   setIsAdmin(!isAdmin);
   // };
 
+  const deleteBook = async (id) => {
+    console.log("tyep is",typeof(id))
+    const res = await fetch(`http://localhost:5000/books/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = res.status;
+    setBook(book.filter((book) => book.id !== id));
+    
+
+    console.log(data);
+    // getBooks();
+  }
+
+  const addReview = async (data) => {
+
+    const resp = await fetch("http://localhost:5000/reviews", {
+            method: "POST",
+            headers: {
+
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        const data1 = await resp.json();
+
+    setReview([...review, data1]);
+  }
+
   return (
     <BookStoreContext.Provider
       value={{
         addItem,
         buyItem,
+        addReview,
         book,
         logout,
         user,
         addUser,
+        setBook,
+        deleteBook,
         isAdmin,
         setIsAdmin,
         isLogged,
         changeIsLogged,
+        review
       }}
     >
       {children}

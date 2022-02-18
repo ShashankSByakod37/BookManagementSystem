@@ -1,12 +1,15 @@
-import {useState} from "react";
+import {useState,useContext} from "react";
 
+import BookStoreContext from "../../context/BookStoreContext";
 export const AddBook = ({handleClick}) => {
 
+  const {setBook,book} = useContext(BookStoreContext);
 
-  const [bookName, setBookName] = useState("");
-  const [authorName, setAuthorName] = useState("");
+
+  const [name, setBookName] = useState("");
+  const [author, setAuthorName] = useState("");
   const [price , setPrice] = useState();
-  const[publishedYear, setPublishedYear] = useState();
+  const[publishedyear, setPublishedYear] = useState();
   const [genre, setGenre] = useState("");
   const[error,setError] = useState("");
   const[success,setSuccess] = useState("");
@@ -15,18 +18,18 @@ export const AddBook = ({handleClick}) => {
    const handleSubmit = async(e) => {
     e.preventDefault();
 
-    if(bookName === "" || authorName === "" || price === "" || publishedYear === "" || genre === "" ){
+    if(name === "" || author === "" || price === "" || publishedyear === "" || genre === "" ){
       setError("Please fill all the fields");
 
     }
     else{
         setError("");
         const obj = {
-          bookName: bookName,
-          authorName: authorName,
-          price: price,
-          publishedYear: publishedYear,
-          genre: genre,
+          name,
+          author,
+          price,
+          publishedyear,
+          genre
         }
 
         console.log(obj); 
@@ -49,7 +52,9 @@ export const AddBook = ({handleClick}) => {
         }).then(()=>setSuccess("Book Added Successfully"));
         
 
-        // const data = await resp.json();
+        const data = await resp.json();
+
+        // setBook[...book,data];
 
         // console.log(data);
         
@@ -95,7 +100,7 @@ export const AddBook = ({handleClick}) => {
               placeholder="Enter Book Name"
               name="bookName"
               autoComplete="bookName"
-              value={bookName}
+              value={name}
               onChange={(e) => setBookName(e.target.value)}
               
             />
@@ -112,7 +117,7 @@ export const AddBook = ({handleClick}) => {
               placeholder="Enter Author Name "
               autoComplete="authorName"
               name="authorName"
-              value={authorName}
+              value={author}
               onChange={(e) => setAuthorName(e.target.value)}
               
             />
@@ -150,7 +155,7 @@ export const AddBook = ({handleClick}) => {
               placeholder="Enter the publishing year of the book"
               name="publishedYear"
               autoComplete="publishedYear"
-              value={publishedYear}
+              value={publishedyear}
               onChange = {(e) => setPublishedYear(e.target.value)}
               
             />

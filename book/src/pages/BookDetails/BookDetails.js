@@ -3,12 +3,18 @@ import { useParams, useNavigate } from "react-router-dom";
 import Card from "../../components/shared/Card";
 import BookStoreContext from "../../context/BookStoreContext";
 import { FaRupeeSign } from "react-icons/fa";
+import { Review } from "./Review";
+import Icon from "react-crud-icons";
 
 export const BookDetails = () => {
   const[quantity,setQuantity]=useState(1);
   const navigate = useNavigate();
   const { id } = useParams();
-  const { book,user,addItem,buyItem } = useContext(BookStoreContext);
+  const handleDelete = (id) =>{
+
+  }
+  console.log("id in param is",typeof(id));
+  const { book,user,addItem,buyItem,deleteBook } = useContext(BookStoreContext);
   
 
   const bk = book.find((b) => b.id == id);
@@ -21,7 +27,7 @@ export const BookDetails = () => {
     console.log("user name is ",user.username);
     console.log("quantity",quantity);
 
-    const userid = user.id;
+    const userid = localStorage.getItem("id");
     const bookid = bk.id;
 
 
@@ -35,7 +41,7 @@ export const BookDetails = () => {
     console.log("userItems",userItems);
     addItem(userItems);
     
-    navigate("/");
+    // navigate("/");
     console.log("Buy Item",buyItem);
 
     setQuantity(1);
@@ -160,6 +166,22 @@ export const BookDetails = () => {
             <div className="form-outline col-5">
               <button className="btn btn-primary" style = {{color:"Black"}}>Add to Cart</button>
             </div>
+            {parseInt(localStorage.getItem("isAdmin")) ? <div>
+            <button onClick={handleDelete}>Delete</button>
+            <div className=" deleteIcons " style={{ border: "none" }}>
+            <Icon
+              tooltip=""
+              name="delete"
+              // tooltip="delete"
+              theme="dark"
+              size="big"
+              onClick={() => {
+                deleteBook(bk.id)
+                navigate("/books")
+              }}
+            />
+          </div>
+            </div> : null}
             </form>
             </div>
           </div>
@@ -168,11 +190,11 @@ export const BookDetails = () => {
 
       <button
         onClick={() => {
-          navigate("/books");
         }}
       >
         Go Back
       </button>
+      <Review id  = {id}/>
     </div>
   );
 };
