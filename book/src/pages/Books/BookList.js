@@ -66,7 +66,9 @@ export const BookList = () => {
 
                     <div className="row">
                       <img
-                        src="https://learning.oreilly.com/library/cover/9781449344573/250w/"
+                        // src="https://learning.oreilly.com/library/cover/9781449344573/250w/"
+                        src={book.url}
+                        
                         alt={book.name}
                         style={{
                           width: "100%",

@@ -13,6 +13,8 @@ export const AddBook = ({handleClick}) => {
   const [genre, setGenre] = useState("");
   const[error,setError] = useState("");
   const[success,setSuccess] = useState("");
+  const[url,setUrl]=useState("");
+
 
   useEffect(()=>{
 
@@ -24,6 +26,7 @@ export const AddBook = ({handleClick}) => {
       setPrice(bookEdit.data.price);
       setPublishedYear(bookEdit.data.publishedyear);
       setGenre(bookEdit.data.genre);
+      setUrl(bookEdit.data.url);
     }
   },[bookEdit]);
 
@@ -42,7 +45,7 @@ export const AddBook = ({handleClick}) => {
    const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(name === "" || author === "" || price === "" || publishedyear === "" || genre === "" ){
+    if(name === "" || author === "" || price === "" || publishedyear === "" || genre === "" || url=="" ){
       setError("Please fill all the fields");
 
     }
@@ -54,7 +57,8 @@ export const AddBook = ({handleClick}) => {
           author,
           price,
           publishedyear,
-          genre
+          genre,
+          url
         }
         if(bookEdit.flag === true){
           updateBook(obj,bookEdit.data.id);
@@ -75,6 +79,7 @@ export const AddBook = ({handleClick}) => {
         setPrice("");
         setPublishedYear("");
         setGenre("");
+        setUrl("");
       
 
 
@@ -197,6 +202,21 @@ export const AddBook = ({handleClick}) => {
               value={genre}
               onChange = {(e) => setGenre(e.target.value)}
               
+            />
+            {/* {console.log(genre)} */}
+          </div>
+          <div className="form-group col-md-6">
+            {/* add genre */}
+            <input
+              type="url"
+              className="form-control form-control-lg"
+              id="exampleInputpublishedYear1"
+              aria-describedby="publishedYearHelp"
+              placeholder="Add url"
+              name="Book URL "
+              value={url}
+              onChange = {(e) => setUrl(e.target.value)}
+
             />
             {/* {console.log(genre)} */}
           </div>

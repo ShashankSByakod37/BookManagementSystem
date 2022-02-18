@@ -4,183 +4,167 @@
       "firstName": "Shashank",
       "lastName": "S",
       "username": "shashank",
-      "email": "shashank@gmail.com",
-      "password": "shashank",
-      "address": "shashank address",
+      "email": "shashank@games24x7.com",
+      "password": "shashu",
+      "address": "ssds cdsds fdsfdsf",
       "isAdmin": 0,
       "id": 1
     },
     {
-      "firstName": "Admin",
-      "lastName": "first",
-      "username": "admin1",
-      "email": "admin1@mail.com",
-      "password": "admin1",
-      "address": "admin1 address\n",
+      "firstName": "test2FullName",
+      "lastName": "test2LastName",
+      "username": "test2",
+      "email": "test2@email.com",
+      "password": "test2",
+      "address": "test2 address",
       "isAdmin": 1,
-      "id": 2
+      "id": 5
     },
     {
-      "firstName": "admin2",
-      "lastName": "second",
-      "username": "admin2",
-      "email": "admin2@gmail.com",
-      "password": "admin2",
-      "address": "admin2 address\n",
+      "firstName": "rajat",
+      "lastName": "kinger",
+      "username": "rajatkinger",
+      "email": "rajat.kinger@gmail.com",
+      "password": "hello",
+      "address": "hello",
+      "isAdmin": 1,
+      "id": 6
+    },
+    {
+      "firstName": "test3",
+      "lastName": "test3",
+      "username": "test3",
+      "email": "test3@gmail.com",
+      "password": "test3",
+      "address": "test3",
       "isAdmin": 0,
-      "id": 3
+      "id": 7
+    },
+    {
+      "firstName": "R ",
+      "lastName": "Harish",
+      "username": "rharish",
+      "email": "rharish@gmail.com",
+      "password": "harish",
+      "address": "rharish address",
+      "isAdmin": 0,
+      "id": 8
     }
   ],
   "books": [
     {
-      "name": "book1",
-      "author": "auth1",
-      "price": "900",
-      "publishedyear": "2010",
-      "genre": "comedy",
-      "id": 1
-    },
-    {
-      "name": "book2",
-      "author": "auth2",
-      "price": "222",
-      "publishedyear": "1900",
-      "genre": "comdey",
+      "name": "The Ballad of Never After ",
+      "author": "Stephanie Garber",
+      "price": "1500",
+      "publishedyear": "2021",
+      "genre": "Fantasy ",
+      "url": "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B550%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781250874740_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       "id": 2
     },
     {
-      "name": "boook3",
-      "author": "auth3",
-      "price": "9",
-      "publishedyear": "1900",
-      "genre": "rrr",
+      "name": "The Great Reset: Joe Biden and the Rise of Twenty-First-Century Fascism",
+      "author": "Glenn Beck, Justin Trask Haskins (With)",
+      "price": "1800",
+      "publishedyear": "2022",
+      "genre": "Politics",
+      "url": "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B550%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781637630594_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       "id": 3
     },
     {
-      "name": "Book1",
-      "author": "Author1",
-      "price": "400",
-      "publishedyear": "2000",
-      "genre": "thriller",
+      "name": "Stellarlune ",
+      "author": "Shannon Messenger",
+      "price": "1300",
+      "publishedyear": "2022",
+      "genre": "Kids",
+      "url": "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B550%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781665929486_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
       "id": 4
+    },
+    {
+      "name": "From Strength to Strength: ",
+      "author": "Arthur C. Brooks",
+      "price": "1800",
+      "publishedyear": "2022",
+      "genre": "Non-Fiction",
+      "url": "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B550%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9780593191484_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      "id": 5
+    },
+    {
+      "name": "House of Sky and Breath",
+      "author": "Sarah J. Maas",
+      "price": "1700",
+      "publishedyear": "2022",
+      "genre": "Fantasy Fiction",
+      "url": "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B550%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781635574074_p0_v4%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      "id": 6
+    },
+    {
+      "name": "It Starts with Us",
+      "author": "Colleen Hoover",
+      "price": "1000",
+      "publishedyear": "2022",
+      "genre": "Novel",
+      "url": "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B550%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781668001226_p0_v2%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
+      "id": 7
     }
   ],
   "buyItems": [
     {
-      "userid": 4,
+      "userid": 1,
       "bookid": 2,
-      "quantity": "5",
-      "id": 14
+      "quantity": "1",
+      "id": 1,
+      "grandtotal": 1500
     },
     {
-      "userid": 4,
+      "userid": 1,
       "bookid": 2,
-      "quantity": "5",
-      "id": 15
+      "quantity": 5,
+      "id": 2,
+      "grandtotal": 7500
     },
     {
-      "userid": 4,
-      "bookid": 2,
-      "quantity": "2",
-      "id": 16
-    },
-    {
-      "userid": 4,
-      "bookid": 2,
-      "quantity": 1,
-      "id": 17
-    },
-    {
-      "userid": 4,
+      "userid": 8,
       "bookid": 4,
-      "quantity": 1,
-      "id": 18
+      "quantity": 4,
+      "grandtotal": 1600,
+      "id": 3
     },
     {
-      "userid": 4,
-      "bookid": 4,
-      "quantity": 1,
-      "id": 19
-    },
-    {
-      "userid": 4,
-      "bookid": 2,
-      "quantity": "6",
-      "id": 20
-    },
-    {
-      "userid": null,
-      "bookid": 2,
-      "quantity": "3",
-      "id": 21
-    },
-    {
-      "userid": "5",
-      "bookid": 2,
-      "quantity": "3",
-      "id": 22
-    },
-    {
-      "userid": "1",
-      "bookid": 2,
-      "quantity": "3",
-      "id": 23
-    },
-    {
-      "userid": "5",
-      "bookid": 2,
-      "quantity": 1,
-      "id": 24
-    },
-    {
-      "userid": "1",
-      "bookid": 4,
-      "quantity": "15",
-      "id": 25
+      "userid": 8,
+      "bookid": 5,
+      "quantity": 5,
+      "grandtotal": 9000,
+      "id": 4
     }
   ],
   "reviews": [
     {
-      "userid": 4,
-      "bookid": 11,
+      "userid": 1,
+      "bookid": 2,
       "rating": 2,
-      "text": "fsddsfsdg gdgdfgdfgdfgdf",
+      "text": "This is a good book. Filler Text",
       "id": 11
     },
     {
-      "userid": 5,
-      "bookid": 2,
+      "userid": 8,
+      "bookid": 4,
       "rating": 4,
-      "text": "hello  nice book",
+      "text": "Great book by author",
       "id": 12
     },
     {
-      "userid": 5,
-      "bookid": 1,
+      "userid": 8,
+      "bookid": 5,
       "rating": 4,
-      "text": "book 1 is so awesome",
+      "text": "Great work by author",
       "id": 13
     },
     {
-      "userid": 5,
-      "bookid": 1,
-      "rating": 3,
-      "text": "sfdsfdsgdsgdsgdsfgds",
+      "userid": 8,
+      "bookid": 5,
+      "rating": 4,
+      "text": "nice job by author",
       "id": 14
-    },
-    {
-      "userid": 5,
-      "bookid": 4,
-      "rating": 3,
-      "text": "this book brought in 2022",
-      "id": 15
-    },
-    {
-      "userid": 1,
-      "bookid": 4,
-      "rating": 3,
-      "text": "what a book this is its damn good",
-      "id": 16
     }
   ]
 }

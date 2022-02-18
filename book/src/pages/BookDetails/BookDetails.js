@@ -7,7 +7,7 @@ import { Review } from "./Review";
 import Icon from "react-crud-icons";
 
 export const BookDetails = () => {
-  const[quantity,setQuantity]=useState(1);
+  const[quan,setQuan]=useState(1);
   const navigate = useNavigate();
   
   const { id } = useParams();
@@ -26,16 +26,24 @@ export const BookDetails = () => {
     console.log("user id is",user.id);
     console.log("book id is",bk.id);
     console.log("user name is ",user.username);
-    console.log("quantity",quantity);
+    console.log("quantity",quan);
 
-    const userid = localStorage.getItem("id");
+    const userid = parseInt(localStorage.getItem("id"));
     const bookid = bk.id;
-
+    const bookprice = bk.price;
+    const bookname = bk.name;
+    const bookauthor = bk.author;
+    const quantity = parseInt(quan);
+    const grandtotal = quantity*bookprice;
 
     const userItems = {
       userid,
       bookid,
       quantity,
+      grandtotal,
+      // gra
+
+
 
     }
 
@@ -45,7 +53,7 @@ export const BookDetails = () => {
     // navigate("/");
     console.log("Buy Item",buyItem);
 
-    setQuantity(1);
+    setQuan(1);
 
     
 
@@ -76,7 +84,8 @@ export const BookDetails = () => {
               }}
             >
               <img
-                src="https://learning.oreilly.com/library/cover/9781449344573/250w/"
+                // src="https://learning.oreilly.com/library/cover/9781449344573/250w/"
+                src={bk.url}
                 alt={bk.name}
                 style={{ width: "70%", height: "70%",padding: "auto"}}
               />
@@ -160,7 +169,7 @@ export const BookDetails = () => {
               <br/>
             <form className="row" onSubmit={handleSubmit} style={{marginLeft:"0%"}}>
             <div className="form-outline col-5">
-              <input type="number" min={1} id="form12"  value = {quantity} onChange = {(e)=>setQuantity(e.target.value) } className="form-control" 
+              <input type="number" min={1} id="form12"  value = {quan} onChange = {(e)=>setQuan(e.target.value) } className="form-control" 
               style = {{background:"blue",color:"yellow"}} placeholder = "Quantity"/>
               
             </div>
