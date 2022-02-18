@@ -41,7 +41,32 @@
       "id": 6
     }
   ],
-  "books": [],
+  "books": [
+    {
+      "name": "book1",
+      "author": "auth1",
+      "price": "900",
+      "publishedyear": "2010",
+      "genre": "comedy",
+      "id": 1
+    },
+    {
+      "name": "book2",
+      "author": "auth2",
+      "price": "222",
+      "publishedyear": "1900",
+      "genre": "comdey",
+      "id": 2
+    },
+    {
+      "name": "boook3",
+      "author": "auth3",
+      "price": "9",
+      "publishedyear": "1900",
+      "genre": "rrr",
+      "id": 3
+    }
+  ],
   "buyItems": [
     {
       "userid": 4,
@@ -117,6 +142,27 @@
       "rating": 2,
       "text": "fsddsfsdg gdgdfgdfgdfgdf",
       "id": 11
+    },
+    {
+      "userid": 5,
+      "bookid": 2,
+      "rating": 4,
+      "text": "hello  nice book",
+      "id": 12
+    },
+    {
+      "userid": 5,
+      "bookid": 1,
+      "rating": 4,
+      "text": "book 1 is so awesome",
+      "id": 13
+    },
+    {
+      "userid": 5,
+      "bookid": 1,
+      "rating": 3,
+      "text": "sfdsfdsgdsgdsgdsfgds",
+      "id": 14
     }
   ]
 }

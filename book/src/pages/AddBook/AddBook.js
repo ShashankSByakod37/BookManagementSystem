@@ -1,10 +1,9 @@
-import {useState,useContext} from "react";
+import {useState,useContext, useEffect} from "react";
 
 import BookStoreContext from "../../context/BookStoreContext";
 export const AddBook = ({handleClick}) => {
 
-  const {setBook,book} = useContext(BookStoreContext);
-
+  const {setBook,book,addBook,bookEdit,updateBook} = useContext(BookStoreContext);
 
   const [name, setBookName] = useState("");
   const [author, setAuthorName] = useState("");
@@ -14,14 +13,30 @@ export const AddBook = ({handleClick}) => {
   const[error,setError] = useState("");
   const[success,setSuccess] = useState("");
 
+  useEffect(()=>{
+
+    console.log("Book data changing");
+    if(bookEdit.flag === true){
+
+      setBookName(bookEdit.data.name);
+      setAuthorName(bookEdit.data.author);
+      setPrice(bookEdit.data.price);
+      setPublishedYear(bookEdit.data.publishedyear);
+      setGenre(bookEdit.data.genre);
+    }
+  },[bookEdit]);
+
+
+
   
-   const handleSubmit = async(e) => {
+   const handleSubmit = (e) => {
     e.preventDefault();
 
     if(name === "" || author === "" || price === "" || publishedyear === "" || genre === "" ){
       setError("Please fill all the fields");
 
     }
+    
     else{
         setError("");
         const obj = {
@@ -31,8 +46,17 @@ export const AddBook = ({handleClick}) => {
           publishedyear,
           genre
         }
+        if(bookEdit.flag === true){
+          updateBook(obj,bookEdit.data.id);
+          // setBookEdit({data:{},flag:false});
+          bookEdit.flag = false;
+          setSuccess("Book Updated Successfully");
+        }
+        else{
+          addBook(obj);
+          console.log(obj); 
 
-        console.log(obj); 
+        }
 
         setBookName("");
         setAuthorName("");
@@ -41,27 +65,10 @@ export const AddBook = ({handleClick}) => {
         setGenre("");
       
 
-        // fetch('http://localhost
-        const resp = await fetch("http://localhost:5000/books",{
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(obj)
 
-        }).then(()=>setSuccess("Book Added Successfully"));
-        
+        // setTimeout(()=>{
 
-        const data = await resp.json();
-
-        // setBook[...book,data];
-
-        // console.log(data);
-        
-
-        setTimeout(()=>{
-
-          handleClick()},5000);
+        //   handleClick()},5000);
         // ≈;
   }
 }

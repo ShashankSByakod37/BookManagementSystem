@@ -9,6 +9,11 @@ export const BookStoreProvider = ({ children }) => {
     username: "",
   });
 
+  const [bookEdit,setBookEdit] = useState({
+    data : {},
+    flag : false  
+  });
+
   const [review, setReview] = useState([]);
 
 
@@ -85,6 +90,21 @@ export const BookStoreProvider = ({ children }) => {
     console.log(buyItem);
     
   };
+
+  const addBook = async (bk) => {
+    const response = await fetch("http://localhost:5000/books", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bk),
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+    setBook([ ...book, data]);
+  }
 
   const getReviews = async () => {
     const res = await fetch("http://localhost:5000/reviews", {
@@ -185,6 +205,14 @@ export const BookStoreProvider = ({ children }) => {
     // getBooks();
   }
 
+  const editBook = (book) => {
+    setBookEdit({
+      data: book,
+      flag: true,
+    });
+  }
+
+
   const addReview = async (data) => {
 
     const resp = await fetch("http://localhost:5000/reviews", {
@@ -201,9 +229,39 @@ export const BookStoreProvider = ({ children }) => {
     setReview([...review, data1]);
   }
 
+
+  const updateBook = async (data,bkid) => {
+    const resp = await fetch(`http://localhost:5000/books/${bkid}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const data1 = await resp.json();
+    console.log(data1)
+
+    setBook(
+      book.map((bk) =>
+        bk.id === bkid
+          ? {
+              ...bk,
+              ...data,
+            }
+          : bk
+      )
+    );
+    console.log("hey here");
+    console.log(book);
+
+  }
   return (
     <BookStoreContext.Provider
       value={{
+        bookEdit,
+        updateBook,
+        editBook,
         addItem,
         buyItem,
         addReview,
@@ -212,6 +270,7 @@ export const BookStoreProvider = ({ children }) => {
         user,
         addUser,
         setBook,
+        addBook,
         deleteBook,
         isAdmin,
         setIsAdmin,

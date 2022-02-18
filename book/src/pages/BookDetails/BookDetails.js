@@ -9,12 +9,13 @@ import Icon from "react-crud-icons";
 export const BookDetails = () => {
   const[quantity,setQuantity]=useState(1);
   const navigate = useNavigate();
+  
   const { id } = useParams();
   const handleDelete = (id) =>{
 
   }
   console.log("id in param is",typeof(id));
-  const { book,user,addItem,buyItem,deleteBook } = useContext(BookStoreContext);
+  const { book,user,addItem,buyItem,deleteBook,editBook } = useContext(BookStoreContext);
   
 
   const bk = book.find((b) => b.id == id);
@@ -166,18 +167,35 @@ export const BookDetails = () => {
             <div className="form-outline col-5">
               <button className="btn btn-primary" style = {{color:"Black"}}>Add to Cart</button>
             </div>
-            {parseInt(localStorage.getItem("isAdmin")) ? <div>
-            <button onClick={handleDelete}>Delete</button>
-            <div className=" deleteIcons " style={{ border: "none" }}>
+            {parseInt(localStorage.getItem("isAdmin")) ? <div className="row">
+            
+            <div className=" deleteIcons " style={{ border: "none",cursor:"pointer",width:"100px" }} >
             <Icon
               tooltip=""
               name="delete"
               // tooltip="delete"
+
               theme="dark"
               size="big"
               onClick={() => {
                 deleteBook(bk.id)
+                  console.log(bk);
+                
                 navigate("/books")
+              }}
+            />
+          </div>
+          <div className=" deleteIcons " style={{ border: "none",cursor:"pointer",width:"100px" }} >
+            <Icon
+              tooltip=""
+              name="edit"
+              // tooltip="delete"
+
+              theme="dark"
+              size="big"
+              onClick={() => {
+                editBook(bk)
+                navigate("/addbook")
               }}
             />
           </div>
