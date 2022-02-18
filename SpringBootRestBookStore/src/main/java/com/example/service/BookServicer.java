@@ -13,6 +13,8 @@ import com.example.model.Book;
 public class BookServicer {
 	@Autowired
 	BookDAO dao;
+	@Autowired
+	LibraryServicer libraryServicer;
 	
 	public BookServicer() {
 		super();
@@ -41,8 +43,16 @@ public class BookServicer {
 
 	public Book deleteBook(Book book) {
 		System.out.println("In BOOK SERVICER deleteBook");
+		System.out.println("First deleting customer book mappings");
+		libraryServicer.deleteCustomersOfBookByBookId(book.getId());
+		System.out.println("Finished deletion");
 		dao.delete(book);
 		return book;
+	}
+	public void addManyBooks(List<Book> books) {
+		System.out.println("IN BOOK SERVICER addManyBooks");
+		dao.saveAll(books);
+		
 	}
 
 }

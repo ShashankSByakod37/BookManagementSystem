@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.Book;
 import com.example.model.Customer;
+import com.example.model.Library;
+import com.example.model.Reviews;
 import com.example.service.BookServicer;
 import com.example.service.CustomerServicer;
+import com.example.service.LibraryServicer;
+import com.example.service.ReviewsServicer;
 
 @SpringBootApplication(scanBasePackages={"com.example.dao","com.example.service","com.example.model","com.example.demo"})
 @EntityScan("com.example.model")
@@ -32,6 +37,7 @@ public class SpringBootRestBookStore {
 
 }
 
+@CrossOrigin(origins = "localhost:3000")
 @RestController
 @RequestMapping("/api")
 class WelcomeController{
@@ -39,6 +45,10 @@ class WelcomeController{
 	CustomerServicer customerServicer;
 	@Autowired
 	BookServicer bookServicer;
+	@Autowired
+	LibraryServicer libraryServicer;
+	@Autowired
+	ReviewsServicer reviewsServicer;
 	@GetMapping("/hi")
 	public String sayHelloWorld() {
 		System.out.println("HERE!");
@@ -70,6 +80,13 @@ class WelcomeController{
 		System.out.println("Inserting customer into DB "+customer.getId());
 		Customer inserted = customerServicer.insertCustomer(customer);
 		return inserted;
+		
+	}
+	
+	@PostMapping("/customers/addAll")
+	public void createManyCustomers(@RequestBody List<Customer> customers) {
+		System.out.println("Inserting customers into DB ");
+		customerServicer.addManyCustomers(customers);
 		
 	}
 	
@@ -111,13 +128,13 @@ class WelcomeController{
 		
 	}
 	
-	@PostMapping("/books")
-	public Book createBook(@RequestBody Book book) {
-		System.out.println("Inserting book into DB "+book.getId());
-		Book inserted = bookServicer.insertBook(book);
-		return inserted;
+	@PostMapping("/books/addAll")
+	public void createBook(@RequestBody List<Book> books) {
+		System.out.println("Inserting books into DB ");
+		bookServicer.addManyBooks(books);
 		
 	}
+	
 	
 	@PutMapping("/books")
 	public Book updateBook(@RequestBody Book book) {
@@ -137,4 +154,69 @@ class WelcomeController{
 		Book deleted = bookServicer.deleteBook(book);
 		return deleted;
 	}
+	
+	@DeleteMapping("library/{id}")
+	void deleteCustomersOfBookByBookId(@PathVariable int id) {
+		System.out.println("Deleting customers of book "+id);
+		libraryServicer.deleteCustomersOfBookByBookId(id);
+	}
+	
+	@PostMapping("library")
+	public Library createMapping(@RequestBody Library library) {
+		System.out.println("Inserting book into DB ");
+		Library inserted = libraryServicer.insertCustomerBookMapping(library);
+		return inserted;
+		
+	}
+	
+	@PostMapping("/library/addAll")
+	public void createManyLibraries(@RequestBody List<Library> libraries) {
+		System.out.println("Inserting libraries into DB ");
+		libraryServicer.addManyLibraries(libraries);
+		
+	}
+	
+	@GetMapping("library/customers/{id}")
+	public List<Library> getLibraryByCustomerId(@PathVariable int id){
+		System.out.println("Getting getLibraryByCustomerId "+id);
+		return libraryServicer.getLibraryByCustomerId(id);
+	} 
+	@GetMapping("library/books/{id}")
+	public List<Library> getLibraryByBookId(@PathVariable int id){
+		System.out.println("Getting getLibraryByBookId "+id);
+		return libraryServicer.getLibraryByBookId(id);
+	}
+	
+	@PostMapping("reviews")
+	public Reviews createMapping(@RequestBody Reviews reviews) {
+		System.out.println("Inserting reviews mapping into DB "+reviews.getId());
+		Reviews inserted = reviewsServicer.insertCustomerBookMapping(reviews);
+		return inserted;
+		
+	}
+	
+	@PostMapping("/reviews/addAll")
+	public void createManyReviews(@RequestBody List<Reviews> reviews) {
+		System.out.println("Inserting reviews into DB ");
+		reviewsServicer.addManyReviews(reviews);
+		
+	}
+	
+	@GetMapping("reviews/customers/{id}")
+	public List<Reviews> getReviewsByCustomerId(@PathVariable int id){
+		System.out.println("Getting getReviewsByCustomerId "+id);
+		return reviewsServicer.getReviewsByCustomerId(id);
+	} 
+	@GetMapping("reviews/books/{id}")
+	public List<Reviews> getReviewsByBookId(@PathVariable int id){
+		System.out.println("Getting getReviewsByBookId "+id);
+		return reviewsServicer.getReviewsByBookId(id);
+	}
+	@DeleteMapping("reviews/{id}")
+	void deleteReviewsOfBookByBookId(@PathVariable int id) {
+		System.out.println("Deleting reviews of book "+id);
+		reviewsServicer.deleteReviewsOfBookByBookId(id);
+	}
+	
+	
 }

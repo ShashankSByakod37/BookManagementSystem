@@ -3,14 +3,16 @@ package com.example.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Books")
 public class Book {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	int id;
 	@Column
 	String name;
@@ -23,7 +25,7 @@ public class Book {
 	@Column
 	String genre;
 	@Column
-	String imgurl;
+	String url;
 	
 	
 
@@ -75,23 +77,13 @@ public class Book {
 		this.genre = genre;
 	}
 
-	public String getImgurl() {
-		return imgurl;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setImgurl(String imgurl) {
-		this.imgurl = imgurl;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
-	public Book updateCar(Book new_book) {
-		this.setName(new_book.getName());
-		this.setPrice(new_book.getPrice());
-		this.setId(new_book.getId());
-		this.setAuthor(new_book.getAuthor());
-		this.setGenre(new_book.getGenre());
-		this.setImgurl(new_book.getImgurl());
-		this.setPublishedyear(new_book.getPublishedyear());
-		return this;
-	}
 	
 }

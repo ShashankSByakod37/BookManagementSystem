@@ -43,6 +43,11 @@ public class CustomerServicer {
 		dao.delete(customer);
 		return customer;
 	}
+	
+	public void addManyCustomers(List<Customer> customers) {
+		System.out.println("In CUSTOMER SERVICER deleteCustomer");
+		dao.saveAll(customers);
+	}
 
 	
 }
