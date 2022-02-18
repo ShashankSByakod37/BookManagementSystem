@@ -76,7 +76,7 @@ export const BookDetails = () => {
               }}
             >
               <img
-                src="https://learning.oreilly.com/library/cover/9781449344573/250w/"
+                src={bk.url}
                 alt={bk.name}
                 style={{ width: "70%", height: "70%",padding: "auto"}}
               />
