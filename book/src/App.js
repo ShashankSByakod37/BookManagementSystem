@@ -16,6 +16,7 @@ import {Order} from "./pages/Order/Order";
 import { BookDetails } from "./pages/BookDetails/BookDetails";
 import {Customer} from "./pages/Customer/Customer";
 import { AddBook } from "./pages/AddBook/AddBook";
+import Home from "./pages/Home/Home";
 
 function App() {
   const { isLogged } = useContext(BookStoreContext);
@@ -45,6 +46,7 @@ function App() {
             <Route path = "/addbook" element={<AddBook />} />
           </Routes>
         </Router>
+        <Home/>
       </div>
 
   );
