@@ -28,7 +28,16 @@ export const AddBook = ({handleClick}) => {
   },[bookEdit]);
 
 
-
+  const handleReset = (e) =>{
+    e.preventDefault();
+    setBookName("");
+    setAuthorName("");
+    setPrice("");
+    setPublishedYear("");
+    setGenre("");
+    setError("");
+    setSuccess("");
+  }
   
    const handleSubmit = (e) => {
     e.preventDefault();
@@ -198,6 +207,7 @@ export const AddBook = ({handleClick}) => {
         <br/>
         
         <button className="btn btn-outline-light btn-block btn-lg px-5" type="submit"> Add The Book</button>
+        <input class="btn btn-outline-light btn-block btn-lg px-5" onClick = {handleReset} type="reset" value="Reset"></input>
       </form>
         <div className="display-2" style = {{margin:"10%"}}>{success}</div>
     </div>

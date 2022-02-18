@@ -4,41 +4,31 @@
       "firstName": "Shashank",
       "lastName": "S",
       "username": "shashank",
-      "email": "shashank@games24x7.com",
-      "password": "shashu",
-      "address": "ssds cdsds fdsfdsf",
+      "email": "shashank@gmail.com",
+      "password": "shashank",
+      "address": "shashank address",
       "isAdmin": 0,
       "id": 1
     },
     {
-      "firstName": "testFullName",
-      "lastName": "testLastName",
-      "username": "test1",
-      "email": "test1@email.com",
-      "password": "test1",
-      "address": "test1 addresss",
-      "isAdmin": 0,
-      "id": 4
-    },
-    {
-      "firstName": "test2FullName",
-      "lastName": "test2LastName",
-      "username": "test2",
-      "email": "test2@email.com",
-      "password": "test2",
-      "address": "test2 address",
+      "firstName": "Admin",
+      "lastName": "first",
+      "username": "admin1",
+      "email": "admin1@mail.com",
+      "password": "admin1",
+      "address": "admin1 address\n",
       "isAdmin": 1,
-      "id": 5
+      "id": 2
     },
     {
-      "firstName": "rajat",
-      "lastName": "kinger",
-      "username": "rajatkinger",
-      "email": "rajat.kinger@gmail.com",
-      "password": "hello",
-      "address": "hello",
-      "isAdmin": true,
-      "id": 6
+      "firstName": "admin2",
+      "lastName": "second",
+      "username": "admin2",
+      "email": "admin2@gmail.com",
+      "password": "admin2",
+      "address": "admin2 address\n",
+      "isAdmin": 0,
+      "id": 3
     }
   ],
   "books": [
@@ -65,6 +55,14 @@
       "publishedyear": "1900",
       "genre": "rrr",
       "id": 3
+    },
+    {
+      "name": "Book1",
+      "author": "Author1",
+      "price": "400",
+      "publishedyear": "2000",
+      "genre": "thriller",
+      "id": 4
     }
   ],
   "buyItems": [
@@ -133,6 +131,12 @@
       "bookid": 2,
       "quantity": 1,
       "id": 24
+    },
+    {
+      "userid": "1",
+      "bookid": 4,
+      "quantity": "15",
+      "id": 25
     }
   ],
   "reviews": [
@@ -170,6 +174,13 @@
       "rating": 3,
       "text": "this book brought in 2022",
       "id": 15
+    },
+    {
+      "userid": 1,
+      "bookid": 4,
+      "rating": 3,
+      "text": "what a book this is its damn good",
+      "id": 16
     }
   ]
 }

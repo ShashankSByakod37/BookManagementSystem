@@ -1,11 +1,52 @@
 import React, { useContext } from "react";
 import Card from "../../components/shared/Card";
 import BookStoreContext from "../../context/BookStoreContext";
-import { Link } from "react-router-dom";
-import {  FaRupeeSign } from "react-icons/fa";
+import { Link,useNavigate } from "react-router-dom";
+import { FaRupeeSign } from "react-icons/fa";
 
 export const BookList = () => {
+  const navigate = useNavigate();
   const { book } = useContext(BookStoreContext);
+  // book = null;
+
+
+  const handleBack = () =>{
+    navigate("/addBook");
+  }
+
+  if (!book || book.length === 0) {
+    return (
+      <div
+        className="col-md-6"
+        style={{
+          width: "60%",
+          margin: "auto",
+          padding: "10px",
+        }}
+      >
+        <div className="">
+          {parseInt(localStorage.getItem("isAdmin")) ? (
+            <div className=" display-4" style={{ textAlign: "center" }}>
+              Fill up the form to view Employee Details...!
+              <div>
+                <button type="button"  onClick = { 
+                    handleBack
+                } className="btn btn-primary btn-lg">
+                  Please add some books 
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className=" display-4" style={{ textAlign: "center" }}>
+              {" "}
+              No Books were Added by Admin
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="container md-2" style={{ margin: "5% auto 5% auto" }}>
       <div style={{ width: "100%", backgroundColor: "transparent" }}>
@@ -47,10 +88,12 @@ export const BookList = () => {
                             <i>{book.author}</i>
                           </h6>
                         </div>
-                        <div  className="col-md-12">
-                       
-                        <h3> <FaRupeeSign/>{book.price}</h3>
-                          
+                        <div className="col-md-12">
+                          <h3>
+                            {" "}
+                            <FaRupeeSign />
+                            {book.price}
+                          </h3>
                         </div>
                       </div>
                     </div>

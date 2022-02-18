@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 const BookStoreContext = createContext();
 
 export const BookStoreProvider = ({ children }) => {
+
+  const [entireUsers,setEntireUsers] = useState([]);    
+
   const [user, setUser] = useState({
     id: 0,
     username: "",
@@ -13,6 +16,17 @@ export const BookStoreProvider = ({ children }) => {
     data : {},
     flag : false  
   });
+
+  useEffect(()=>{
+
+
+    // if(parseInt(localStorage.getItem("isAdmin")) == 1){
+      getEntireUser();
+      console.log("entire users",isAdmin);
+      console.log("islogged",isLogged);
+    // }
+
+  },[])
 
   const [review, setReview] = useState([]);
 
@@ -40,6 +54,19 @@ export const BookStoreProvider = ({ children }) => {
     console.log(data);
 
 
+  }
+
+  const getEntireUser = async () => {
+    const res = await fetch(`http://localhost:5000/users`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
+    const data = await res.json();
+    console.log(data);
+    setEntireUsers([...data]);
   }
 
   const getBooks = async () => {
@@ -256,9 +283,29 @@ export const BookStoreProvider = ({ children }) => {
     console.log(book);
 
   }
+
+
+  const removeUser = async (id) => {
+
+    const res = await fetch(`http://localhost:5000/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    console.log(data);
+    setEntireUsers(entireUsers.filter((user) => user.id !== id));
+
+
+
+  }
   return (
     <BookStoreContext.Provider
       value={{
+        entireUsers,
+        removeUser,
         bookEdit,
         updateBook,
         editBook,

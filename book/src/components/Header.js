@@ -21,7 +21,7 @@ export const Header = () => {
         
       </nav> */}
       <ul className="nav">
-      <li className="nav-item  ">
+      <li className="nav-item  " aria-disabled style = {{}}>
             <p className="nav-link h3 " to="/home">
             Welcome.!,  {localStorage.getItem("username")}
             </p>
@@ -38,12 +38,12 @@ export const Header = () => {
             </Link>
           </li>
 
-       {parseInt(localStorage.getItem("isAdmin")) &&  (<li className="nav-item " >
+       {parseInt(localStorage.getItem("isAdmin")) ?  (<li className="nav-item " >
             {console.log( "nav bar returns for add a book ", (isAdmin))}
             <Link className="nav-link h3" to="/addbook">
               Add a Book 
             </Link>
-          </li>)}
+          </li>) : ""}
 
 
           {/* <h2>{isAdmin }{typeof(parseInt(localStorage.getItem("isAdmin")))}</h2> */}
@@ -54,21 +54,21 @@ export const Header = () => {
             </Link>
           </li>
           
-       {parseInt(localStorage.getItem("isAdmin")) &&   (<li className="nav-item " >
+       {parseInt(localStorage.getItem("isAdmin")) ?   (<li className="nav-item " >
           {console.log( "nav bar returns for customers ",typeof(localStorage.getItem("isAdmin")))}
             
             <Link className="nav-link h3" to="/customers">
               Customers
             </Link>
-          </li>)}
+          </li>): ""}
         
-       {!(parseInt(localStorage.getItem("isAdmin"))) && (<li className="nav-item" style = {{  display : !isAdmin && 'auto' }}>
+       {!(parseInt(localStorage.getItem("isAdmin"))) ? (<li className="nav-item" style = {{  display : !isAdmin && 'auto' }}>
           {console.log( "nav bar returns for orders ",localStorage.getItem("isAdmin"))}
             
             <Link className="nav-link h3" to="/orders">
               Purchase
             </Link>
-          </li>)}
+          </li>) : ""}
           
           <li className="nav-item">
             <Link className="nav-link " to="/books/:id"></Link>

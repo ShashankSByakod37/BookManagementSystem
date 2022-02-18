@@ -13,7 +13,7 @@ export const Register = ({handleClick}) => {
   const[address,setAddress] = useState("");
   const[error,setError] = useState("");
   const[success,setSuccess] = useState("");
-  const[isAdmin,setIsAdmin] = useState(false);
+  const[isAdmin,setIsAdmin] = useState(0);
 
   
   const handleSubmit = async(e) => {
