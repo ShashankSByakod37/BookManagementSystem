@@ -47,7 +47,7 @@ export const BookStoreProvider = ({ children }) => {
   const getAdmin = async () => {
     
 
-    const res = await fetch(`http://localhost:5000/users/${user.id}`, {
+    const res = await fetch(`http://localhost:8080/api/customers/${user.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ export const BookStoreProvider = ({ children }) => {
   }
 
   const getEntireUser = async () => {
-    const res = await fetch(`http://localhost:5000/users`, {
+    const res = await fetch(`http://localhost:8080/api/customers`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export const BookStoreProvider = ({ children }) => {
   }
   
   const getBooks = async () => {
-    const res = await fetch("http://localhost:5000/books", {
+    const res = await fetch("http://localhost:8080/api/books", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export const BookStoreProvider = ({ children }) => {
   };
 
   const getBookById = async (bookId) => {
-    const res = await fetch(`http://localhost:5000/books/${bookId}`, {
+    const res = await fetch(`http://localhost:8080/api/books/${bookId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -106,30 +106,21 @@ export const BookStoreProvider = ({ children }) => {
   
       
       
-      // getBuyItems();
+      getBuyItems();
       
     },[])
     
     const [buyItem, setBuyItem] = useState([
-      {
-        "userid": 1,
-        "bookid": 2,
-        "quantity": "1",
-        "id": 1,
-        "grandtotal": 1500
-      },
-      {
-        "userid": 1,
-        "bookid": 2,
-        "quantity": 5,
-        "id": 2,
-        "grandtotal": 7500
-      }
+      
     ]);
+
+
+    const [library, setLibrary] = useState([]);
+
     const getBuyItems = async () => {
       
     const userid = parseInt(localStorage.getItem("id"));
-    const res = await fetch(`http://localhost:5000/buyItems/${userid}`,{
+    const res = await fetch(`http://localhost:8080/api/library/customers/${userid}`,{
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -138,18 +129,14 @@ export const BookStoreProvider = ({ children }) => {
     // console.log
     const data = await res.json();
 
-
-    console.log("data is here",data);
-    // setBuyItem([ ...data,...buyItem]);
-
-
+    setLibrary([...data]);
 
   }
 
 
 
   const addItem = async (item) => {
-    const response = await fetch("http://localhost:5000/buyItems", {
+    const response = await fetch("http://localhost:8080/api/library/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -165,7 +152,7 @@ export const BookStoreProvider = ({ children }) => {
   };
 
   const addBook = async (bk) => {
-    const response = await fetch("http://localhost:5000/books", {
+    const response = await fetch("http://localhost:8080/api/books", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -180,7 +167,7 @@ export const BookStoreProvider = ({ children }) => {
   }
 
   const getReviews = async () => {
-    const res = await fetch("http://localhost:5000/reviews", {
+    const res = await fetch(`http://localhost:8080/api/reviews/books/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -191,9 +178,19 @@ export const BookStoreProvider = ({ children }) => {
 
     setReview([...data]);
 
+  }
 
+  const getReviewById = async (id) => {
+    const res = await fetch(`http://localhost:8080/api/reviews/books/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
+    const data = await res.json();
 
+    setReview([...data]);
   }
 
 
@@ -255,7 +252,7 @@ export const BookStoreProvider = ({ children }) => {
 
   const deleteBook = async (id) => {
 
-    const res = await fetch(`http://localhost:5000/books/${id}`, {
+    const res = await fetch(`http://localhost:8080/api/books/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -280,7 +277,7 @@ export const BookStoreProvider = ({ children }) => {
 
   const addReview = async (data) => {
 
-    const resp = await fetch("http://localhost:5000/reviews", {
+    const resp = await fetch("http://localhost:8080/api/reviews", {
             method: "POST",
             headers: {
 
@@ -296,7 +293,9 @@ export const BookStoreProvider = ({ children }) => {
 
 
   const updateBook = async (data,bkid) => {
-    const resp = await fetch(`http://localhost:5000/books/${bkid}`, {
+
+    const a = parseInt(bkid);
+    const resp = await fetch(`http://localhost:8080/api/books/${a}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -306,17 +305,8 @@ export const BookStoreProvider = ({ children }) => {
 
     const data1 = await resp.json();
 
-
-    setBook(
-      book.map((bk) =>
-        bk.id === bkid
-          ? {
-              ...bk,
-              ...data,
-            }
-          : bk
-      )
-    );
+    setBook(book.map((book) => (book.id === a ? data1 : book)));
+    
     console.log("hey here");
     console.log(book);
 
@@ -325,7 +315,7 @@ export const BookStoreProvider = ({ children }) => {
 
   const removeUser = async (id) => {
 
-    const res = await fetch(`http://localhost:5000/users/${id}`, {
+    const res = await fetch(`http://localhost:8080/api/customers/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -344,6 +334,7 @@ export const BookStoreProvider = ({ children }) => {
       value={{
         entireUsers,
         removeUser,
+        getReviewById,
         bookEdit,
         updateBook,
         editBook,

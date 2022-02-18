@@ -51,7 +51,7 @@ export const Register = ({handleClick}) => {
       
 
         // fetch('http://localhost
-        const resp = await fetch("http://localhost:5000/users",{
+        const resp = await fetch("http://localhost:8080/api/customers",{
           method: "POST",
           headers: {
             "Content-Type": "application/json"

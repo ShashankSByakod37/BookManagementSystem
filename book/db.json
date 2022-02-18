@@ -63,15 +63,6 @@
   ],
   "books": [
     {
-      "name": "The Ballad of Never After ",
-      "author": "Stephanie Garber",
-      "price": "1500",
-      "publishedyear": "2021",
-      "genre": "Fantasy ",
-      "url": "https://prodimage.images-bn.com/lf?set=key%5Bresolve.pixelRatio%5D,value%5B1%5D&set=key%5Bresolve.width%5D,value%5B550%5D&set=key%5Bresolve.height%5D,value%5B10000%5D&set=key%5Bresolve.imageFit%5D,value%5Bcontainerwidth%5D&set=key%5Bresolve.allowImageUpscaling%5D,value%5B0%5D&product=path%5B/pimages/9781250874740_p0_v1%5D&call=url%5Bfile:common/decodeProduct.chain%5D",
-      "id": 2
-    },
-    {
       "name": "The Great Reset: Joe Biden and the Rise of Twenty-First-Century Fascism",
       "author": "Glenn Beck, Justin Trask Haskins (With)",
       "price": "1800",

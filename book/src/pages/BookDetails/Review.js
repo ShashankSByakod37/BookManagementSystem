@@ -1,4 +1,4 @@
-import React, { useState,useContext } from "react";
+import React, { useState,useContext, useEffect } from "react";
 import Card from "../../components/shared/Card";
 import BookStoreContext from "../../context/BookStoreContext";
 import "./Review.css";
@@ -6,8 +6,13 @@ import "./Review.css";
 export const Review = ({id}) => {
   const [texts, setText] = useState("");
   const [rate, setRating] = useState(0);
-  const {addReview,review,entireUsers} = useContext(BookStoreContext);
-  const rew = review.filter((r) => r.bookid == parseInt(id));
+  const {addReview,review,entireUsers,getReviewById} = useContext(BookStoreContext);
+  // const rew = review.filter((r) => r.bookid == parseInt(id));\
+  useEffect(() => {
+    
+    getReviewById(id);
+    
+  },[]);  
 
   const [error, setError] = useState("");
 
@@ -53,7 +58,7 @@ export const Review = ({id}) => {
         </div>
 
        
-        {rew.map((r) => (
+        {review.map((r) => (
             <div className="col-md-12" key={r.id} style = {{width :"60%"}} >
                 <div className="card" style = {{margin:"2% 20% auto 20%",width :"60%"}}>
                     <div className="card-body">

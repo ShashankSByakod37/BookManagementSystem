@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaRupeeSign } from 'react-icons/fa';
-import { useContext,useState } from 'react';
+import { useContext, } from 'react';
 import BookStoreContext from '../../context/BookStoreContext';
 import Card from '../../components/shared/Card';
 
@@ -16,50 +16,36 @@ export const Purchase = () => {
   // 2,b2,q2,grand2,]
 
   //   cons
-
-
-  const arr = [{
-
-    id:1,
-    name : "book1",
-    price : 100,
-    author : "author1",
-    quantity : 1,
-    grandtotal : 100,
-    url : "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._SX325_BO1,204,203,200_.jpg"
+  console.log("book",buyItem);
+  // const [items,setItems]=useState([]);
 
 
 
-
-  },
-
-
-]
-  
-  
-  
   const getBooksMapping = buyItem.map((item)=>{
-    // console.log("items",buyItem);
 
-    const { url,name,author} = getBookById(item.bookid);
+    const bk = book.filter((b)=>b.id===item.bookid)
 
-    const obj = {"url" : url,
-                  "id" : item.bookid,
-                  "name" : name,
-                  "author":author,
+    const bk1 = bk[0];
+
+    
+
+    const obj = {"url" : bk1.url,
+                  "name" : bk1.name,
+                  "author":bk1.author,
                   "quantity": item.quantity,
                   "grandtotal":item.grandtotal};
 
 
+
+                  console.log(obj);
+
+
     return obj;
 
-    
-
-
-
-
-
   })
+
+
+  
 
   
 

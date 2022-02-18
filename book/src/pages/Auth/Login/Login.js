@@ -25,11 +25,13 @@ export const Login = ({ handleClick }) => {
     if (username === "" || password === "") {
       setError("Please fill all the fields");
     } else {
-      setError("");
-      const response = await fetch(
-        "http://localhost:5000/users?_sort=id&_order=desc"
-      );
+      // setError("");
 
+      // console.log()
+      const response = await fetch(
+        "http://localhost:8080/api/customers",
+      );
+        console.log("response",response);
       const data = await response.json();
 
       console.log(data);
