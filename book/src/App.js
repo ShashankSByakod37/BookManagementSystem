@@ -12,7 +12,7 @@ import {
   Routes,
 } from "react-router-dom";
 import { BookList } from "./pages/Books/BookList";
-import {Order} from "./pages/Order/Order";
+import {Purchase} from "./pages/Purchase/Purchase";
 import { BookDetails } from "./pages/BookDetails/BookDetails";
 import {Customer} from "./pages/Customer/Customer";
 import { AddBook } from "./pages/AddBook/AddBook";
@@ -40,9 +40,10 @@ function App() {
             <Route path="/books" element={<BookList />} />
             <Route path="/books/:id" element={<BookDetails />} />
             <Route path = "/about" element={<About />} />
-            <Route path = "/orders" element={<Order />} />
+
             <Route path = "/customers" element={<Customer />} />
             <Route path = "/addbook" element={<AddBook />} />
+            <Route path = "/purchase" element={<Purchase />} />
           </Routes>
         </Router>
       </div>

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { FaStepBackward } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const BookStoreContext = createContext();
@@ -6,6 +7,10 @@ const BookStoreContext = createContext();
 export const BookStoreProvider = ({ children }) => {
 
   const [entireUsers,setEntireUsers] = useState([]);    
+
+
+
+
 
   const [user, setUser] = useState({
     id: 0,
@@ -29,9 +34,8 @@ export const BookStoreProvider = ({ children }) => {
   },[])
 
   const [review, setReview] = useState([]);
+  
 
-
-  const [buyItem, setBuyItem] = useState([]);
 
   const [book, setBook] = useState([]);
 
@@ -41,7 +45,7 @@ export const BookStoreProvider = ({ children }) => {
   const [isLogged, setIsLogged] = useState(false);
 
   const getAdmin = async () => {
-
+    
 
     const res = await fetch(`http://localhost:5000/users/${user.id}`, {
       method: "GET",
@@ -49,11 +53,11 @@ export const BookStoreProvider = ({ children }) => {
         "Content-Type": "application/json",
       },
     })
-
+    
     const data = await res.json();
     console.log(data);
 
-
+    
   }
 
   const getEntireUser = async () => {
@@ -63,12 +67,12 @@ export const BookStoreProvider = ({ children }) => {
         "Content-Type": "application/json",
       },
     })
-
+    
     const data = await res.json();
     console.log(data);
     setEntireUsers([...data]);
   }
-
+  
   const getBooks = async () => {
     const res = await fetch("http://localhost:5000/books", {
       method: "GET",
@@ -76,27 +80,69 @@ export const BookStoreProvider = ({ children }) => {
         "Content-Type": "application/json",
       },
     });
-
+    
     const data = await res.json();
-
+    
     setBook([ ...data]);
   };
 
-  const getBuyItems = async () => {
-    const res = await fetch("http://localhost:5000/buyItems",{
+  const getBookById = async (bookId) => {
+    const res = await fetch(`http://localhost:5000/books/${bookId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
-
+    
+    const data = await res.json();
+    
+    return data;
+    
+    // setBook([ ...data]);
+  };
+  
+  
+    useEffect(()=>{
+  
+      
+      
+      // getBuyItems();
+      
+    },[])
+    
+    const [buyItem, setBuyItem] = useState([
+      {
+        "userid": 1,
+        "bookid": 2,
+        "quantity": "1",
+        "id": 1,
+        "grandtotal": 1500
+      },
+      {
+        "userid": 1,
+        "bookid": 2,
+        "quantity": 5,
+        "id": 2,
+        "grandtotal": 7500
+      }
+    ]);
+    const getBuyItems = async () => {
+      
+    const userid = parseInt(localStorage.getItem("id"));
+    const res = await fetch(`http://localhost:5000/buyItems/${userid}`,{
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    // console.log
     const data = await res.json();
 
-    console.log(data);
-    console.log("Buy Items initially")
-    setBuyItem([ ...data]);
-    console.log(buyItem);
-    console.log("above output")
+
+    console.log("data is here",data);
+    // setBuyItem([ ...data,...buyItem]);
+
+
 
   }
 
@@ -112,9 +158,9 @@ export const BookStoreProvider = ({ children }) => {
     });
 
     const data = await response.json();
+
+    setBuyItem([ ...buyItem,data]);
   
-    console.log("Buy Items after addition of add item");
-    console.log(buyItem);
     
   };
 
@@ -129,7 +175,7 @@ export const BookStoreProvider = ({ children }) => {
 
     const data = await response.json();
 
-    console.log(data);
+
     setBook([ ...book, data]);
   }
 
@@ -150,14 +196,6 @@ export const BookStoreProvider = ({ children }) => {
 
   }
 
-  useEffect(()=>{
-
-
-    
-    getBuyItems();
-    
-  },[isLogged])
-
 
 
   useEffect(() => {
@@ -172,19 +210,19 @@ export const BookStoreProvider = ({ children }) => {
 
   
   useEffect(() => {
-    console.log("user data");
+
     
     const uname = localStorage.getItem("username");
     const uid = parseInt(localStorage.getItem("id"));
     const adm = parseInt(localStorage.getItem("isAdmin"));
     setIsAdmin(adm);
-    console.log("admin",isAdmin);
-    setUser({ id: uid, username: uname });
-    console.log(user);
-    console.log("id val is", user.id,typeof(user.id));
 
-    console.log("after setting setuser function");
-    console.log(user);
+    setUser({ id: uid, username: uname });
+
+
+
+
+
   }, []);
 
   useEffect(() => {
@@ -216,7 +254,7 @@ export const BookStoreProvider = ({ children }) => {
   // };
 
   const deleteBook = async (id) => {
-    console.log("tyep is",typeof(id))
+
     const res = await fetch(`http://localhost:5000/books/${id}`, {
       method: "DELETE",
       headers: {
@@ -267,7 +305,7 @@ export const BookStoreProvider = ({ children }) => {
     });
 
     const data1 = await resp.json();
-    console.log(data1)
+
 
     setBook(
       book.map((bk) =>
@@ -323,7 +361,8 @@ export const BookStoreProvider = ({ children }) => {
         setIsAdmin,
         isLogged,
         changeIsLogged,
-        review
+        review,
+        getBookById
       }}
     >
       {children}

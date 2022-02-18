@@ -6,7 +6,7 @@ import "./Review.css";
 export const Review = ({id}) => {
   const [texts, setText] = useState("");
   const [rate, setRating] = useState(0);
-  const {addReview,review} = useContext(BookStoreContext);
+  const {addReview,review,entireUsers} = useContext(BookStoreContext);
   const rew = review.filter((r) => r.bookid == parseInt(id));
 
   const [error, setError] = useState("");
@@ -52,13 +52,10 @@ export const Review = ({id}) => {
           <b>Reviews</b>
         </div>
 
-        <div className="text-white-50 mb-5" style={{ textAlign: "center" }}>
-          <b> 
-          <h2>{error}</h2></b>
-        </div>
+       
         {rew.map((r) => (
-            <div className="col-md-12" key={r.id}>
-                <div className="card">
+            <div className="col-md-12" key={r.id} style = {{width :"60%"}} >
+                <div className="card" style = {{margin:"2% 20% auto 20%",width :"60%"}}>
                     <div className="card-body">
                         <div className="row">
                             <div className="col-md-2">
@@ -72,16 +69,22 @@ export const Review = ({id}) => {
                             <div className="col-md-10">
                                 <div className="row">
 
-                                    <div className="col-md-12" style = {{color:"black"}}>
+                                    <div className="col-md-10" style = {{color:"black"}}>
                                         <h4>{r.text}</h4>
                                     </div>
-                                    <div className="col-md-12">
-                                        <h6>
-                                            <span className="text-warning">
-                                                <i className="fa fa-star" />
-                                                {r.rating}
-                                            </span>
+                                    <div className="col-md-2">
+                                    <div className="position-relative display-6">
+                                        <h6 >
+                                        <div class="position-absolute top-0 end-0">
+                                        
+                                      <div style = {{color:"black" ,backgroundColor:"sandybrown" ,border : "9px solid sandybrown",borderRadius:"100%", padding:"5%" ,
+                                       fontFamily: "sans-serif",fontSize : "200%"}}>{r.rating}</div>
+                                        </div>
+
+
+
                                         </h6>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -90,6 +93,11 @@ export const Review = ({id}) => {
                 </div>
             </div>
         ))}
+
+        <div className="text-white-50 mb-5" style={{ textAlign: "center" }}>
+        <b> 
+        <h2>{error}</h2></b>
+      </div>
 
         <form onSubmit={handleSubmit}>
           <div

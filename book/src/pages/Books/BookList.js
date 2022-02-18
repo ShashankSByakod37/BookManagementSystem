@@ -48,13 +48,13 @@ export const BookList = () => {
   }
 
   return (
-    <div className="container md-2" style={{ margin: "5% auto 5% auto" }}>
+    <div className="container" style={{ margin: "auto auto auto auto",padding:"0" }}>
       <div style={{ width: "100%", backgroundColor: "transparent" }}>
         {" "}
         <div className="row">
           {book.map((book) => {
             return (
-              <div className="col-md-4" style={{ padding: "2%" }} key={book.id}>
+              <div className="col-md-4" style={{ padding: "03%" }} key={book.id}>
                 <Card>
                   <Link
                     className="list-group-item list-group-item-action"

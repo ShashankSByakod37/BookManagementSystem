@@ -66,6 +66,8 @@ export const BookDetails = () => {
         margin: "auto ",
         marginTop: "5%",
         marginBottom: "5%",
+        height: "auto",
+        maxHeight : "70%",
         width: "auto",
         maxWidth : "70%",
         boxSizing: "border-box",
