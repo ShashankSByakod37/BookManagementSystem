@@ -36,8 +36,17 @@ public class BookServicer {
 		return dao.save(book);
 	}
 
-	public Book updateBook(Book book) {
-		System.out.println("In BOOK SERVICER updateBook");
+	public Book updateBook(Book book, int id) {
+		Book bk = dao.findById(id).orElse(null);
+		System.out.println("hello from update book");
+		System.out.println(bk);
+//		bk.setId(id);
+		bk.setName(book.getName());
+		bk.setAuthor(book.getAuthor());
+		bk.setPrice(book.getPrice());
+		bk.setPublishedyear(book.getPublishedyear());
+		bk.setGenre(book.getGenre());
+		bk.setUrl(book.getUrl());
 		return dao.save(book);
 	}
 

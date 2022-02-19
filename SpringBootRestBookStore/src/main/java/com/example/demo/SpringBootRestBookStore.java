@@ -37,7 +37,7 @@ public class SpringBootRestBookStore {
 
 }
 
-@CrossOrigin(origins = "localhost:3000")
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 class WelcomeController{
@@ -135,11 +135,17 @@ class WelcomeController{
 		
 	}
 	
+	@PostMapping("/books")
+	public Book addBook(@RequestBody Book books) {
+		System.out.println("Inserting books into DB ");
+		return bookServicer.insertBook(books);
+		
+	}
 	
-	@PutMapping("/books")
-	public Book updateBook(@RequestBody Book book) {
-		System.out.println("Updating book in DB"+book.getId());
-		Book updated = bookServicer.updateBook(book);
+	@PutMapping("/books/update/{id}")
+	public Book updateBook(@PathVariable int id,  @RequestBody Book book) {
+//		int bkid = Integer.parseInt(id);
+		Book updated = bookServicer.updateBook(book,id);
 		return updated;
 	}
 	

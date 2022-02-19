@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.dao.BookDAO;
 import com.example.dao.LibraryDAO;
 import com.example.model.Book;
 import com.example.model.Library;
@@ -16,7 +17,7 @@ public class LibraryServicer {
 	@Autowired
 	LibraryDAO dao;
 	@Autowired
-	BookServicer bookServicer;
+	BookDAO bookdao;
 	
 	public LibraryServicer() {
 		super();
@@ -36,7 +37,7 @@ public class LibraryServicer {
 		List<Book> b = new ArrayList<Book>();
 		List<Library> l = getLibraryByCustomerId(id);
 		for(Library t: l) {
-			b.add(bookServicer.getBookById(t.getBookid()));
+			b.add(bookdao.findById(t.getBookid()).orElse(null));
 		}
 		return b;
 	}
@@ -45,7 +46,7 @@ public class LibraryServicer {
 		List<Book> b = new ArrayList<Book>();
 		List<Library> l = getLibraryByBookId(id);
 		for(Library t: l) {
-			b.add(bookServicer.getBookById(t.getBookid()));
+			b.add(bookdao.findById(t.getBookid()).orElse(null));
 		}
 		return b;
 	}
