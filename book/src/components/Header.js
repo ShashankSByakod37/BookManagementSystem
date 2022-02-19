@@ -89,9 +89,6 @@ export const Header = () => {
             ""
           )}
 
-          <li className="nav-item">
-            <Link className="nav-link " to="/books/:id"></Link>
-          </li>
           <li>
             <button
               onClick={() => {

@@ -8,10 +8,6 @@ export const BookStoreProvider = ({ children }) => {
 
   const [entireUsers,setEntireUsers] = useState([]);    
 
-
-
-
-
   const [user, setUser] = useState({
     id: 0,
     username: "",
@@ -24,28 +20,21 @@ export const BookStoreProvider = ({ children }) => {
 
   useEffect(()=>{
 
-
-    // if(parseInt(localStorage.getItem("isAdmin")) == 1){
       getEntireUser();
       console.log("entire users",isAdmin);
       console.log("islogged",isLogged);
-    // }
 
   },[])
 
   const [review, setReview] = useState([]);
-  
-
 
   const [book, setBook] = useState([]);
-
 
   const [isAdmin, setIsAdmin] = useState(0);
 
   const [isLogged, setIsLogged] = useState(false);
 
   const getAdmin = async () => {
-    
 
     const res = await fetch(`http://localhost:8080/api/customers/${user.id}`, {
       method: "GET",
@@ -56,8 +45,6 @@ export const BookStoreProvider = ({ children }) => {
     
     const data = await res.json();
     console.log(data);
-
-    
   }
 
   const getEntireUser = async () => {
@@ -83,7 +70,7 @@ export const BookStoreProvider = ({ children }) => {
     
     const data = await res.json();
     
-    setBook([ ...data]);
+    setBook(data);
   };
 
   const getBookById = async (bookId) => {
@@ -104,21 +91,15 @@ export const BookStoreProvider = ({ children }) => {
   
     useEffect(()=>{
   
-      
-      
       getBuyItems();
       
     },[])
     
-    const [buyItem, setBuyItem] = useState([
-      
-    ]);
-
+    const [buyItem, setBuyItem] = useState([]);
 
     const [library, setLibrary] = useState([]);
 
     const getBuyItems = async () => {
-      
     const userid = parseInt(localStorage.getItem("id"));
     const res = await fetch(`http://localhost:8080/api/library/customers/${userid}`,{
       method: "GET",
@@ -126,14 +107,9 @@ export const BookStoreProvider = ({ children }) => {
         "Content-Type": "application/json",
       },
     });
-    // console.log
     const data = await res.json();
-
     setLibrary([...data]);
-
   }
-
-
 
   const addItem = async (item) => {
     const response = await fetch("http://localhost:8080/api/library/", {
@@ -143,15 +119,12 @@ export const BookStoreProvider = ({ children }) => {
       },
       body: JSON.stringify(item),
     });
-
     const data = await response.json();
-
     setBuyItem([ ...buyItem,data]);
-  
-    
   };
 
   const addBook = async (bk) => {
+    console.log("Inside add book");
     const response = await fetch("http://localhost:8080/api/books", {
       method: "POST",
       headers: {
@@ -159,10 +132,7 @@ export const BookStoreProvider = ({ children }) => {
       },
       body: JSON.stringify(bk),
     });
-
     const data = await response.json();
-
-
     setBook([ ...book, data]);
   }
 
@@ -173,11 +143,8 @@ export const BookStoreProvider = ({ children }) => {
         "Content-Type": "application/json",
       },
     });
-
     const data = await res.json();
-
     setReview([...data]);
-
   }
 
   const getReviewById = async (id) => {
@@ -187,43 +154,27 @@ export const BookStoreProvider = ({ children }) => {
         "Content-Type": "application/json",
       },
     });
-
     const data = await res.json();
-
     setReview([...data]);
   }
 
-
-
   useEffect(() => {
 
-
-    getReviews();
-
-
-
+    // getReviewById();
+    getBooks();
 
   },[]);
-
   
   useEffect(() => {
-
-    
     const uname = localStorage.getItem("username");
     const uid = parseInt(localStorage.getItem("id"));
     const adm = parseInt(localStorage.getItem("isAdmin"));
     setIsAdmin(adm);
-
     setUser({ id: uid, username: uname });
-
-
-
-
-
   }, []);
 
   useEffect(() => {
-    getBooks();
+    // getBooks();
     const user = localStorage.getItem("user");
     if (user) {
       // setUser(JSON.parse(user));
@@ -293,9 +244,9 @@ export const BookStoreProvider = ({ children }) => {
 
 
   const updateBook = async (data,bkid) => {
-
+    console.log("type is",typeof(bkid));
     const a = parseInt(bkid);
-    const resp = await fetch(`http://localhost:8080/api/books/${a}`, {
+    const resp = await fetch(`http://localhost:8080/api/books/update/${bkid}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -305,8 +256,8 @@ export const BookStoreProvider = ({ children }) => {
 
     const data1 = await resp.json();
 
-    setBook(book.map((book) => (book.id === a ? data1 : book)));
-    
+    setBook(book.map((book) => (book.id === bkid ? data1 : book)));
+    // setBook([...book, data1]);
     console.log("hey here");
     console.log(book);
 

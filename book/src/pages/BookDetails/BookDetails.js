@@ -219,6 +219,7 @@ export const BookDetails = () => {
 
       <button
         onClick={() => {
+          navigate("/books")
         }}
       >
         Go Back

@@ -7,6 +7,7 @@ import { FaRupeeSign } from "react-icons/fa";
 export const BookList = () => {
   const navigate = useNavigate();
   const { book } = useContext(BookStoreContext);
+  
   // book = null;
 
 
@@ -52,9 +53,9 @@ export const BookList = () => {
       <div style={{ width: "100%", backgroundColor: "transparent" }}>
         {" "}
         <div className="row">
-          {book.map((book) => {
+          {book.map((book,key) => {
             return (
-              <div className="col-md-4" style={{ padding: "03%" }} key={book.id}>
+              <div className="col-md-4" style={{ padding: "03%" }} key={key}>
                 <Card>
                   <Link
                     className="list-group-item list-group-item-action"

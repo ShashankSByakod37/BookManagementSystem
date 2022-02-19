@@ -67,6 +67,7 @@ export const AddBook = ({handleClick}) => {
           setSuccess("Book Updated Successfully");
         }
         else{
+          console.log("adding book")
           addBook(obj);
           console.log(obj); 
           setSuccess("Book Added Successfully");
