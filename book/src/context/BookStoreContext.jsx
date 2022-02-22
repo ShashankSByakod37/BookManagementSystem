@@ -108,7 +108,7 @@ export const BookStoreProvider = ({ children }) => {
       },
     });
     const data = await res.json();
-    setLibrary([...data]);
+    setBuyItem([...data]);
   }
 
   const addItem = async (item) => {
